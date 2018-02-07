@@ -1,0 +1,100 @@
+# Homework 2: Bubble Blitz
+
+In this homework, you will practice:
+- Decomposing a problem into classes and methods
+- Creating animation loops
+- Exploring how to write effective tests
+
+### Background Knowledge: Using the GraphicsGroup class
+The comp124graphics package contains a class called GraphicsGroup that is a GraphicsObject and can therefore be placed on a canvas using the add method. The powerful and useful aspect of a GraphicsGroup is that any object in the GraphicsObject hierarchy can be placed inside a GraphicsGroup object using the add method also. This enables several graphical objects that could be placed together or all moved in the same way to be kept together in one object and all moved at once.
+
+One thing to keep in mind with GraphicsGroups is that they define their own interior coordinate system. For example, if you add a Rectangle object to the group at position (10, 10) and then add the group to the CanvasWindow at position (50, 50), then your rectangle will actually appear at position (60,60) relative to the upper left corner of the window.
+
+### Your Tasks
+
+Your task in this homework is to create an Angry Birds style game where the user can adjust the angle and velocity of a cannon (the black line) to shoot purple bubbles on the screen:
+
+![visual image of the bubble blitz game](bubbleblitz.png)
+
+1. Fork and clone the project. Import the code into Intellij as a new module.
+2. Explore the code we have given you. We have already decomposed the problem into the following classes:
+  - BubbleBlitz: A CanvasWindow responsible for running the program and holding the other graphical objects.
+  - Cannon: a Line representing the direction the cannon is pointing
+  - CannonBall: an Ellipse representing the cannon ball. Responsible for updating its position when fired.
+  - Bubble: a GraphicsGroup representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannon ball.
+  - BubbleManager: keeps track of bubbles and is able to query each bubble to see if it should be popped.
+  - VisualCannonTester: can be used to test that your CannonBall code works correctly.
+ 
+#### Part 0: Cannon Balls
+
+You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. Start by working on the `CannonBall` class. Complete a constructor and add instance variables as needed. 
+Each CannonBall object must keep track of the initial center coordinates for x and y, the initial velocity, the initial angle indicating the direction it is shot, and the maximum x and y values for the boundaries outside of which it should stop moving. Don't forget to call the constructor of the super class. This will make the error that appears on the class signature go away.
+
+Complete the `updatePosition` method. This method should update the position of the cannon ball based on the physics equations for projectile motion:
+> newXPosition = initialCenterXPos + initialVelocity * currentTimeStep * cos(initialAngleInRadians)
+
+> newYPosition = initialCenterYPos + initialVelocity * currentTimeStep * -sin(initialAngleInRadians) - 0.5 * gravity * currentTimeStep^2
+
+where gravity = -9.8 and currentTimeStep represents a double value that starts at zero and increments by 0.1 each time updatePosition is called.
+
+The pseudocode for your method is as follows:
+
+```
+Increment currentTimeStep by 0.1
+Calculate new x and y positions
+if the new positions are greater than zero and less than the maximum bounds:
+    Set the position of the CannonBall to the new position (Hint: A CannonBall *is* an Ellipse which stores the x and y position. Look at the Ellipse methods for help.)
+    return true
+return false
+``` 
+
+Now visually test your results. Open `VisualCannonTester` and edit line 33 to initialize a CannonBall object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
+
+![visual image of the cannon ball trajectories](cannontrajectories.png)
+
+You should also test your code with unit tests. In the test folder, open the `CannonBallTest` class and uncomment the existing test. Note: In IntelliJ editor, command+/ or control+/ will toggle commenting on a selected region of code. Run the test and make sure that it passes. Add new test methods to check that `updatePosition` returns the expected boolean value and that it does not change the position if the result would put it outside of the specified bounds.
+
+#### Part 1: Bubbles
+
+Look at the `Bubble` class. We have completed the constructor and drawing code for you already. Make sure you understand how the positioning of the Ellipses inside the GraphicsGroup works. We will be using GraphicsGroup objects in future assignments.
+
+Complete the `isCannonBallWithin` method. This should return true if the cannon ball parameter is within the bubble's radius. Otherwise it should return false.
+
+In the test folder, uncomment the code in the `BubbleTest`. Your tests should now pass correctly.
+
+#### Part 2: Popping Bubbles
+
+Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannon balls at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
+
+```
+Ask the user for an angle between zero and 180 degrees
+Update the cannon to the specified angle
+Ask the user for an initial velocity
+Create a cannonball starting at the cannon's x2/y2 position with the specified velocity, angle, and boundaries based on the width/height of the window
+Add the cannonball to the canvas
+While the ball does not hit a bubble and is inbounds:
+    Update the ball's position
+    Pause for 10ms
+Remove the cannonball from the canvas
+```
+
+Requirements and hints:
+- You must use method decomposition! All of the pseudocode above should not be in one method.
+- Look at the documentation for CanvasWindow to figure out how to pause and remove objects.
+- Look at the `BubbleManager` to determine which method actually calls the bubbles' `isCannonBallWithin` method.
+
+Run the BubbleBlitz program and interactively test that you can shoot a bubble. Now modify your code so that as long as bubbles still exist on the canvas you can repeatedly keep asking the user for new angles/velocities to shoot again.
+Once you can do that, modify your code again so that when all the bubbles have popped the game resets and allows you to play again. If you have practiced good method decomposition, these last two steps should not be too difficult. Hint: the `BubbleManager` can tell you if there are still bubbles left on the screen.
+
+### Optional extra tasks
+
+Occasionally, our homeworks will list optional extra credit tasks that allow you to go beyond the basic requirements of the assignment. You won't receive a _lot_ of extra credit points for the extra work (If you are doing extra credit, you probably don't need them anyway), but they are fun opportunities to challenge yourself and learn more!
+There are many things you could do to go beyond the basics of this assignment:
+- Implement a maximum number of shots the user can take before telling them that they lose. Display the current shot count on the screen.
+- Add more interesting graphics drawings (e.g. animations of bubbles popping, a more detailed cannon, etc.)
+- Implement a count down timer that displays on the screen
+- Implement a class to represent terrain that randomly gets distributed throughout the sky. The terrain should block the cannon balls, so that the user has to make use of the projectile curves to hit blocked bubbles.
+
+
+
+
