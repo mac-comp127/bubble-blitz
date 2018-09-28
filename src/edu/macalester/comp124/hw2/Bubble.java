@@ -48,10 +48,11 @@ public class Bubble extends GraphicsGroup {
      *
      * @return true If the given ball intersects this bubble (even tangentially).
      */
-    public boolean intersects(CannonBall ball) {
+    public boolean intersects(CannonBall ball){
         //TODO return true if the ball is within the radius of the bubble.
         // Hint: Don't forget to take into account the ball's radius too.
         // Hint: The Math.hypot() method can help you compute the distance between two points.
-        return false;
+        double dist = Math.hypot(ball.getCenterX() - centerX, ball.getCenterY() - centerY);
+        return dist <= radius + CannonBall.BALL_RADIUS;
     }
 }

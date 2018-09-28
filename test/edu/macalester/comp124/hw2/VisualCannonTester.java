@@ -31,7 +31,13 @@ public class VisualCannonTester extends CanvasWindow {
             double maxYBound = getHeight()-WINDOW_PADDING;
 
             //TODO: instantiate a CannonBall using the variables immediately above and the SPEED constant
-            CannonBall cannonBall = new CannonBall(...);
+            CannonBall cannonBall = new CannonBall(
+                cannon.getX2(),
+                cannon.getY2(),
+                SPEED,
+                angleInDegrees,
+                maxXBound,
+                maxYBound);
 
             add(cannonBall);
             boolean ballIsInMotion = true;

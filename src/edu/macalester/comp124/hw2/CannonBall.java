@@ -9,7 +9,7 @@ public class CannonBall extends Ellipse {
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 
-    //TODO: Add instance variables. Remember that instance variables may or may not have corresponding constructor parameters.
+    private double x, y, dx, dy, maxX, maxY;
 
     public CannonBall(
             double centerX,
@@ -19,23 +19,53 @@ public class CannonBall extends Ellipse {
             double maxX,
             double maxY) {
 
-        //TODO: implement me
+        super(0, 0, BALL_RADIUS * 2, BALL_RADIUS * 2);
+        setFilled(true);
 
-        // To compute the initial velocity:
-        //
-        //double initialAngleRadians = Math.toRadians(initialAngle);
-        //initialSpeed * cos(initialAngleInRadians)   // initial x velocity
-        //initialSpeed * -sin(initialAngleInRadians)  // initial y velocity
-        //
-        // (You'll need to figure out how to use those values.)
+        x = centerX;
+        y = centerY;
+        updateEllipsePosition();
+
+        this.maxX = maxX;
+        this.maxY = maxY;
+
+        double initialAngleInRadians = Math.toRadians(initialAngle);
+        dx = initialSpeed * Math.cos(initialAngleInRadians);
+        dy = initialSpeed * -Math.sin(initialAngleInRadians);
+    }
+
+    public double getCenterX() {
+        return x;
+    }
+
+    public double getCenterY() {
+        return y;
+    }
+
+    @Override
+    public double getX() {
+        return x;
     }
 
     /**
      * Update the cannon ball's position if it is in bounds
      * @return true if the ball is in within the maxXBound and maxYBound
      */
-    public boolean updatePosition() {
-        //TODO: fix me
-        return false;
+    public boolean updatePosition(double dt) {
+        double newX = x + dx * dt,
+               newY = y + dy * dt;
+        if(newX > 0 && newX < maxX && newY > 0 && newY < maxY) {
+            x = newX;
+            y = newY;
+            dy -= GRAVITY * dt;
+            updateEllipsePosition();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void updateEllipsePosition() {
+        setPosition(x - getWidth() / 2, y - getHeight() / 2);
     }
 }
