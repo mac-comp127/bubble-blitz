@@ -62,7 +62,7 @@ Your method should do this:
 
 #### Visual testing
 
-Now visually test your results. Open `VisualCannonTester` and edit line 33 to initialize a CannonBall object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
+Now visually test your results. Open `VisualCannonTester` in the test folder, and edit line 33 to initialize a `CannonBall` object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
 
 ![visual image of the cannon ball trajectories](cannontrajectories.png)
 
@@ -76,7 +76,7 @@ Look at the `Bubble` class. We have completed the constructor and drawing code f
 
 Complete the `isCannonBallWithin` method. This should return true if the cannon ball parameter is within the bubble's radius. Otherwise it should return false.
 
-In the test folder, uncomment the code in the `BubbleTest`. Your tests should now pass correctly.
+In the test folder, run `BubbleTest`. Your tests should now pass correctly.
 
 ### Part 2: Popping Bubbles
 

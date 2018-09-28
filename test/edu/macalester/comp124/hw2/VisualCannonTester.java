@@ -9,7 +9,7 @@ public class VisualCannonTester extends CanvasWindow {
 
     private Cannon cannon;
 
-    public static final double VELOCITY = 100;
+    public static final double SPEED = 100;
     public static final int WINDOW_PADDING = 30;
 
     public static void main(String[] args){
@@ -30,15 +30,15 @@ public class VisualCannonTester extends CanvasWindow {
             double maxXBound = getWidth();
             double maxYBound = getHeight()-WINDOW_PADDING;
 
-            //TODO: initialize an instance of your cannon ball using the values above and the initial VELOCITY
-            CannonBall cannonBall = null; // FIXME
+            //TODO: instantiate a CannonBall using the variables immediately above and the SPEED constant
+            CannonBall cannonBall = new CannonBall(...);
 
             add(cannonBall);
             boolean ballIsInMotion = true;
             while (ballIsInMotion) {
                 double oldX = cannonBall.getX();
                 double oldY = cannonBall.getY();
-                ballIsInMotion = cannonBall.updatePosition();
+                ballIsInMotion = cannonBall.updatePosition(0.1);
                 Line tracer = new Line(oldX, oldY, cannonBall.getX(), cannonBall.getY());
                 tracer.setStrokeColor(Color.LIGHT_GRAY);
                 add(tracer);
