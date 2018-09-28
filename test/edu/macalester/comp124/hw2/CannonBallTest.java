@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class CannonBallTest {
 
     @Test
-    public void testBasicUpdatePosition(){
+    public void testBasicUpdatePosition() {
         CannonBall ball = new CannonBall(100, 100, 100, 45, 1100, 600);
 
         ball.updatePosition(0.1);

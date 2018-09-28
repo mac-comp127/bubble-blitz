@@ -33,14 +33,14 @@ public class BubbleBlitz extends CanvasWindow {
         bubbleManager = new BubbleManager(this);
     }
 
-    public void run(){
+    public void run() {
         resetGame();
     }
 
     /**
      * Resets the canvas by removing everything and redrawing new bubbles and a new random placement for the cannon.
      */
-    public void resetGame(){
+    public void resetGame() {
         bubbleManager.removeAllBubbles();
         removeAll();
         createBackground();
@@ -49,12 +49,12 @@ public class BubbleBlitz extends CanvasWindow {
     }
 
     /**
-     * Creates a cannon
-     * @param centerX
-     * @param centerY
-     * @param angleDegrees
+     * Creates a cannon.
+     * @param centerX The anchor position of the cannon
+     * @param centerY The anchor position of the cannon
+     * @param angleDegrees The direction of the cannon
      */
-    private void createCannon(double centerX, double centerY, double angleDegrees){
+    private void createCannon(double centerX, double centerY, double angleDegrees) {
         cannon = new Cannon(centerX, centerY, angleDegrees);
         add(cannon);
     }
@@ -63,7 +63,7 @@ public class BubbleBlitz extends CanvasWindow {
     /**
      * Creates the sky and ground background
      */
-    private void createBackground(){
+    private void createBackground() {
         Rectangle sky = new Rectangle(0, 0, getWidth(), getHeight());
         sky.setFillColor(SKY_COLOR);
         sky.setFilled(true);

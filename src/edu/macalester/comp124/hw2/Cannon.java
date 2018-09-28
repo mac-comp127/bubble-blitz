@@ -10,9 +10,9 @@ public class Cannon extends Line {
     public static final double CANNON_LENGTH = 25;
     private double angleRadians;
 
-    public Cannon(double centerX, double centerY, double angleDegrees){
+    public Cannon(double centerX, double centerY, double angleDegrees) {
         super(centerX, centerY, 0,0);
-        if (angleDegrees < 0 || angleDegrees > 180 ){
+        if (angleDegrees < 0 || angleDegrees > 180 ) {
             throw new IllegalArgumentException("angleDegrees must be an angle between 0 and 180 degrees");
         }
 
@@ -27,14 +27,14 @@ public class Cannon extends Line {
      * Animates the cannon to point at a new direction based on the angleDegrees
      * @param angleDegrees between 0 and 180
      */
-    public void updateCannon(double angleDegrees){
-        if (angleDegrees < 0 || angleDegrees > 180 ){
+    public void updateCannon(double angleDegrees) {
+        if (angleDegrees < 0 || angleDegrees > 180 ) {
             throw new IllegalArgumentException("angleDegrees must be an angle between 0 and 180 degrees");
         }
 
         double newAngleRadians = Math.toRadians(angleDegrees);
 
-        for(int i=0; i < 10; i++){
+        for(int i=0; i < 10; i++) {
             double alpha = i/10.0;
             double angle = lerp(angleRadians, newAngleRadians, alpha);
             double x2 = getX1() + CANNON_LENGTH*Math.cos(angle);
@@ -64,7 +64,7 @@ public class Cannon extends Line {
      * Pauses the program for milliseconds
      * @param milliseconds
      */
-    private void pause(double milliseconds){
+    private void pause(double milliseconds) {
         try {
             int millis = (int) milliseconds;
             int nanos = (int) Math.round((milliseconds - millis) * 1000000);

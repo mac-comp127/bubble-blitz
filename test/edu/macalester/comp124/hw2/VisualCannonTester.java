@@ -12,16 +12,16 @@ public class VisualCannonTester extends CanvasWindow {
     public static final double SPEED = 100;
     public static final int WINDOW_PADDING = 30;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         VisualCannonTester tester = new VisualCannonTester();
     }
 
-    public VisualCannonTester(){
+    public VisualCannonTester() {
         super("Cannon Angles", 1100, 600);
         cannon = new Cannon(WINDOW_PADDING, getHeight()-WINDOW_PADDING, 0);
         add(cannon);
 
-        for(int angle=0; angle <=90; angle+=5){
+        for(int angle=0; angle <=90; angle+=5) {
             cannon.updateCannon(angle);
 
             double angleInDegrees = angle;

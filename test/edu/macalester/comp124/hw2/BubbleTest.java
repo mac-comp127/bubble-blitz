@@ -7,14 +7,14 @@ import static org.junit.Assert.*;
 public class BubbleTest {
 
     @Test
-    public void bubbleIntersectsOverlappingBall(){
+    public void bubbleIntersectsOverlappingBall() {
         Bubble bubble = new Bubble(10, 20, 6);
         assertTrue(bubble.intersects(new CannonBall(5, 19, 0, 0, 0, 0)));  // partially overlapping
         assertTrue(bubble.intersects(new CannonBall(11, 23, 0, 0, 0, 0))); // entirely inside
     }
 
     @Test
-    public void bubbleIntersectsBallAtSinglePoint(){
+    public void bubbleIntersectsBallAtSinglePoint() {
         Bubble bubble = new Bubble(5, 9, 2);
         assertTrue(bubble.intersects(new CannonBall(0.5, 9, 0, 0, 0, 0))); // left
         assertTrue(bubble.intersects(new CannonBall(9.5, 9, 0, 0, 0, 0))); // right
@@ -23,7 +23,7 @@ public class BubbleTest {
     }
 
     @Test
-    public void bubbleDoesNotIntersectNearbyBall(){
+    public void bubbleDoesNotIntersectNearbyBall() {
         Bubble bubble = new Bubble(5, 9, 1.99);  // slightly smaller radius
         assertFalse(bubble.intersects(new CannonBall(0.5, 9, 0, 0, 0, 0))); // left
         assertFalse(bubble.intersects(new CannonBall(9.5, 9, 0, 0, 0, 0))); // right

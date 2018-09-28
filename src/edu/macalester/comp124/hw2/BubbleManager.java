@@ -20,20 +20,19 @@ public class BubbleManager {
 
     /**
      * Constructs a bubble manager for the specified window object.
-     * @param canvas
      */
-    public BubbleManager(BubbleBlitz canvas){
+    public BubbleManager(BubbleBlitz canvas) {
         bubbles = new ArrayList<>();
         random = new Random();
         this.canvas = canvas;
     }
 
     /**
-     * Generates a random number of bubbles placed randomly on the screen
+     * Generates a random number of bubbles placed randomly on the screen.
      */
-    public void generateBubbles(){
+    public void generateBubbles() {
         int numBubbles = randomInt(MIN_BUBBLES, MAX_BUBBLES);
-        for(int i=0; i < numBubbles; i++){
+        for(int i=0; i < numBubbles; i++) {
             double x = randomDouble(0, canvas.getWidth());
             double y = randomDouble(0, canvas.getHeight()-BubbleBlitz.WINDOW_PADDING);
             double radius = randomDouble(MIN_RADIUS, MAX_RADIUS);
@@ -44,14 +43,14 @@ public class BubbleManager {
     }
 
     /**
-     * Checks whether the cannonball hits any of the bubbles
-     * @param cannonBall
-     * @return true if a bubble has been destroyed
+     * Checks whether the cannonball hits any of the bubbles, popping the first intersecting bubble if so.
+     *
+     * @return true If a bubble has been destroyed
      */
-    public boolean testHit(CannonBall cannonBall){
-        // The following is java's syntax for a "for each" loop, i.e. "for each bubble, b, in the bubbles list do..."
-        for(Bubble b : bubbles){
-            if (b.intersects(cannonBall)){
+    public boolean testHit(CannonBall cannonBall) {
+        // The following is java's syntax for a "for each" loop, i.e. "for each bubble b in the bubbles list, do..."
+        for(Bubble b : bubbles) {
+            if (b.intersects(cannonBall)) {
                 popBubble(b);
                 return true;
             }
@@ -61,9 +60,8 @@ public class BubbleManager {
 
     /**
      * Destroys a bubble when it has been hit by a cannonball.
-     * @param b
      */
-    private void popBubble(Bubble b){
+    private void popBubble(Bubble b) {
         canvas.remove(b);
         bubbles.remove(b);
     }
@@ -71,9 +69,9 @@ public class BubbleManager {
     /**
      * Removes all the bubbles from the canvas and the list.
      */
-    public void removeAllBubbles(){
+    public void removeAllBubbles() {
         // The following is java's syntax for a "for each" loop, i.e. "for each bubble, b, in the bubbles list do..."
-        for(Bubble b : bubbles){
+        for(Bubble b : bubbles) {
             canvas.remove(b);
         }
         bubbles.clear();
@@ -83,11 +81,11 @@ public class BubbleManager {
      * Check for existing bubbles
      * @return true if bubbles still exist that have not been popped.
      */
-    public boolean bubblesStillExist(){
+    public boolean bubblesStillExist() {
         return bubbles.size() > 0;
     }
 
-    public int getNumberOfBubbles(){
+    public int getNumberOfBubbles() {
         return bubbles.size();
     }
 
