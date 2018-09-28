@@ -52,7 +52,9 @@ public class Bubble extends GraphicsGroup {
      * @return true if the cannon ball is intersecting.
      */
     public boolean isCannonBallWithin(CannonBall ball){
-        //TODO return true if the ball is within the radius of the bubble. Hint: don't forget to take into account the ball's radius too.
         return false;
+        //TODO return true if the ball is within the radius of the bubble.
+        // Hint: Don't forget to take into account the ball's radius too.
+        // Hint: The Math.hypot() method can help you compute the distance between two points.
     }
 }

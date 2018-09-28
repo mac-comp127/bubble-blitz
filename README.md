@@ -35,9 +35,9 @@ You should use an iterative development process to avoid writing a lot of untest
 
 Each `CannonBall` object must keep track of the following state:
 
-- the ball’s current position, x and y,
-- the ball’s current velocity, dx and dy, and
-- the maximum x and y values for the boundaries outside of which it should stop moving.
+- the ball’s current center position (x and y),
+- the ball’s current velocity (dx and dy), and
+- the maximum x and y values for the boundaries outside of which the ball should stop moving.
 
 #### The constructor
 
@@ -46,6 +46,10 @@ Each `CannonBall` object must keep track of the following state:
 First call the constructor of the super class. This will make the error that appears on the class signature go away.
 
 Use the parameters to initialize the starting state of the class. There is a comment with a hint about computing the initial velocity.
+
+#### Property accessors
+
+Add getter methods for the center x and center y.
 
 #### `updatePosition`
 
@@ -68,7 +72,7 @@ Now visually test your results. Open `VisualCannonTester` in the test folder, an
 
 #### Unit testing
 
-You should also test your code with unit tests. In the test folder, open the `CannonBallTest` class and uncomment the existing test. Note: In IntelliJ, command+/ (Mac) or control+/ (Windows) will toggle comments on a selected region of code. Run the test and make sure that it passes. Add new test methods to check that `updatePosition` returns the expected boolean value and that it does not change the position if the result would put it outside of the specified bounds.
+You should also test your code with unit tests. In the test folder, run `CannonBallTest` and make sure that it passes. (The numbers in the test are already correct.) Add new test methods to check that `updatePosition` returns the expected boolean value, and that it does not change the position if the result would put it outside of the specified bounds.
 
 ### Part 1: Bubbles
 

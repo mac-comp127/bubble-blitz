@@ -36,10 +36,10 @@ public class VisualCannonTester extends CanvasWindow {
             add(cannonBall);
             boolean ballIsInMotion = true;
             while (ballIsInMotion) {
-                double oldX = cannonBall.getX();
-                double oldY = cannonBall.getY();
+                double oldX = cannonBall.getCenterX();
+                double oldY = cannonBall.getCenterY();
                 ballIsInMotion = cannonBall.updatePosition(0.1);
-                Line tracer = new Line(oldX, oldY, cannonBall.getX(), cannonBall.getY());
+                Line tracer = new Line(oldX, oldY, cannonBall.getCenterX(), cannonBall.getCenterY());
                 tracer.setStrokeColor(Color.LIGHT_GRAY);
                 add(tracer);
                 pause(10);
