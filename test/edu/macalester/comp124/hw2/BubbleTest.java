@@ -6,35 +6,29 @@ import static org.junit.Assert.*;
 
 public class BubbleTest {
 
-    /**
-     * Tests whether the bubble intersects method appropriate reports if a cannonball intersects it
-     * Assumes that the first two parameters for the CannonBall constructor are x and y.
-     */
     @Test
-    public void testIsCannonBallWithin(){
-        double bubbleRadius = 10;
-        double bubblePos = bubbleRadius + CannonBall.BALL_RADIUS;
-        Bubble bubble = new Bubble(bubblePos, 0, bubbleRadius);
-        // Test x values
-        CannonBall ball = new CannonBall(0, 0, 0, 0, 0, 0);
-        assertFalse(bubble.intersects(ball));
-        for(int i = 1; i < 25; i++){
-            ball = new CannonBall(i, 0, 0, 0, 0, 0);
-            assertTrue(bubble.intersects(ball));
-        }
-        ball = new CannonBall(bubbleRadius*2 + CannonBall.BALL_RADIUS*2, 0, 0, 0, 0, 0);
-        assertFalse(bubble.intersects(ball));
+    public void bubbleIntersectsOverlappingBall(){
+        Bubble bubble = new Bubble(10, 20, 6);
+        assertTrue(bubble.intersects(new CannonBall(5, 19, 0, 0, 0, 0)));  // partially overlapping
+        assertTrue(bubble.intersects(new CannonBall(11, 23, 0, 0, 0, 0))); // entirely inside
+    }
 
-        // Test y values
-        bubble = new Bubble(0, bubblePos , bubbleRadius);
-        ball = new CannonBall(0, 0, 0, 0, 0, 0);
-        assertFalse(bubble.intersects(ball));
-        for(int i = 1; i < 25; i++){
-            ball = new CannonBall(0, i, 0, 0, 0, 0);
-            assertTrue(bubble.intersects(ball));
-        }
-        ball = new CannonBall(0, bubbleRadius*2 + CannonBall.BALL_RADIUS*2, 0, 0, 0, 0);
-        assertFalse(bubble.intersects(ball));
+    @Test
+    public void bubbleIntersectsBallAtSinglePoint(){
+        Bubble bubble = new Bubble(5, 9, 2);
+        assertTrue(bubble.intersects(new CannonBall(0.5, 9, 0, 0, 0, 0))); // left
+        assertTrue(bubble.intersects(new CannonBall(9.5, 9, 0, 0, 0, 0))); // right
+        assertTrue(bubble.intersects(new CannonBall(5, 4.5, 0, 0, 0, 0))); // top
+        assertTrue(bubble.intersects(new CannonBall(5, 13.5, 0, 0, 0, 0))); // bottom
+    }
+
+    @Test
+    public void bubbleDoesNotIntersectNearbyBall(){
+        Bubble bubble = new Bubble(5, 9, 1.99);  // slightly smaller radius
+        assertFalse(bubble.intersects(new CannonBall(0.5, 9, 0, 0, 0, 0))); // left
+        assertFalse(bubble.intersects(new CannonBall(9.5, 9, 0, 0, 0, 0))); // right
+        assertFalse(bubble.intersects(new CannonBall(5, 4.5, 0, 0, 0, 0))); // top
+        assertFalse(bubble.intersects(new CannonBall(5, 13.5, 0, 0, 0, 0))); // bottom
     }
 
 }
