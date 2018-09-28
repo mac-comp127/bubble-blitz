@@ -80,7 +80,7 @@ Look at the `Bubble` class. We have completed the constructor and drawing code f
 
 Complete the `isCannonBallWithin` method. This should return true if the cannon ball parameter is within the bubble's radius. Otherwise it should return false.
 
-In the test folder, run `BubbleTest`. Your tests should now pass correctly.
+In the test folder, run `BubbleTest`. Its tests should now pass.
 
 ### Part 2: Popping Bubbles
 
