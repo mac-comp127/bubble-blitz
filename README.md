@@ -57,9 +57,10 @@ This method moves the ball if it is still in bounds, then applies gravity by adj
 
 Your method should do this:
 
-- Calculate new x and y coordinates by adding the x and y velocities to the current coordinates.
+- Calculate new x and y coordinates by adding the x and y velocities times `dt` to the current coordinates.
 - If the new positions are greater than zero and less than the maximum:
   - Move the `CannonBall` to the new position. (Hint: A CannonBall *is* an Ellipse which stores the x and y position. Look at the Ellipse methods for help.)
+  - Subtract `GRAVITY` times `dt` from the y velocity.
   - Return true, meaning “in bounds.”
 - Otherwise, if the ball is out of bounds:
   - Return false, meaning “out of bounds.”
