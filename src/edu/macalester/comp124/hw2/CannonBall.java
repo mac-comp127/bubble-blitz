@@ -9,6 +9,8 @@ public class CannonBall extends Ellipse {
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 
+    // This solution keeps centerX and centerY as instance variables.
+    // Solutions could also choose to derive them from the Ellipse’s x and y properties.
     private double centerX, centerY, dx, dy, maxX, maxY;
 
     public CannonBall(
