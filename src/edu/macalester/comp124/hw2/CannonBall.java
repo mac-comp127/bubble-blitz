@@ -9,7 +9,7 @@ public class CannonBall extends Ellipse {
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 
-    private double x, y, dx, dy, maxX, maxY;
+    private double centerX, centerY, dx, dy, maxX, maxY;
 
     public CannonBall(
             double centerX,
@@ -19,11 +19,13 @@ public class CannonBall extends Ellipse {
             double maxX,
             double maxY) {
 
+        // In this solution, updateEllipsePosition() sets x & y below,
+        // but it’s also fine to do the center → upper left math in the constructor call right here:
         super(0, 0, BALL_RADIUS * 2, BALL_RADIUS * 2);
         setFilled(true);
 
-        x = centerX;
-        y = centerY;
+        this.centerX = centerX;
+        this.centerY = centerY;
         updateEllipsePosition();
 
         this.maxX = maxX;
@@ -34,17 +36,18 @@ public class CannonBall extends Ellipse {
         dy = initialSpeed * -Math.sin(initialAngleInRadians);
     }
 
+    /**
+     * The cannonball’s center on the screen.
+     */
     public double getCenterX() {
-        return x;
+        return centerX;
     }
 
+    /**
+     * The cannonball’s center on the screen.
+     */
     public double getCenterY() {
-        return y;
-    }
-
-    @Override
-    public double getX() {
-        return x;
+        return centerY;
     }
 
     /**
@@ -52,11 +55,11 @@ public class CannonBall extends Ellipse {
      * @return true if the ball is in within the maxXBound and maxYBound
      */
     public boolean updatePosition(double dt) {
-        double newX = x + dx * dt,
-               newY = y + dy * dt;
-        if(newX > 0 && newX < maxX && newY > 0 && newY < maxY) {
-            x = newX;
-            y = newY;
+        double newX = centerX + dx * dt,
+               newY = centerY + dy * dt;
+        if(newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
+            centerX = newX;
+            centerY = newY;
             dy -= GRAVITY * dt;
             updateEllipsePosition();
             return true;
@@ -65,7 +68,13 @@ public class CannonBall extends Ellipse {
         }
     }
 
+    /**
+     * Updates the Ellipse’s position on the screen to reflect centerX and centerY, so that the
+     * graphical position of the ball matches the physics position.
+     */
     private void updateEllipsePosition() {
-        setPosition(x - getWidth() / 2, y - getHeight() / 2);
+        setPosition(
+            centerX - getWidth() / 2,
+            centerY - getHeight() / 2);
     }
 }
