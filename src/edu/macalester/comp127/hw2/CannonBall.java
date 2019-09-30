@@ -46,14 +46,14 @@ public class CannonBall {
     }
 
     /**
-     * Adds the cannonball's image to the given canvas.
+     * Adds the cannonball's shape to the given canvas.
      */
     public void addToCanvas(CanvasWindow canvas) {
         canvas.add(ballShape);
     }
 
     /**
-     * Remove the cannonball's image to the given canvas.
+     * Removes the cannonball's shape from the given canvas.
      */
     public void removeFromCanvas(CanvasWindow canvas) {
         canvas.remove(ballShape);
