@@ -31,7 +31,9 @@ Your task in this homework is to create an Angry Birds style game where the user
  
 ### Part 0: Cannon Balls
 
-You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. Start by working on the `CannonBall` class. Complete a constructor and add instance variables as needed.
+You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. As you work, think: “How can I test what I am writing? How can I organize my work so that I can test it _sooner_?”
+
+Start by working on the `CannonBall` class. Complete the constructor and add instance variables as needed.
 
 Each `CannonBall` object must keep track of the following state:
 
@@ -111,10 +113,11 @@ Once you can do that, modify your code again so that when all the bubbles have p
 
 ### Optional bonus challenges
 
-Occasionally, our homeworks will list optional extra credit tasks that allow you to go beyond the basic requirements of the assignment. You won't receive a _lot_ of extra credit points for the extra work (If you are doing extra credit, you probably don't need them anyway), but they are fun opportunities to challenge yourself and learn more!
+Occasionally, our homeworks will list optional extra credit tasks that allow you to go beyond the basic requirements of the assignment. You won't receive a _lot_ of extra credit points for the extra work (If you are doing extra credit, you probably don't need the points anyway), but they are fun opportunities to challenge yourself and learn more!
 There are many things you could do to go beyond the basics of this assignment:
 
 - Implement a maximum number of shots the user can take before telling them that they lose. Display the current shot count on the screen.
 - Add more interesting graphics drawings (e.g. animations of bubbles popping, a more detailed cannon, etc.)
 - Implement a count down timer that displays on the screen
 - Implement a class to represent obstacles randomly distributed throughout the sky. The obstacles should block the cannon balls, so that the user has to make use of the projectile curves to hit blocked bubbles.
+- Make the bubbles slowly float across the screen while the cannonball is moving.
