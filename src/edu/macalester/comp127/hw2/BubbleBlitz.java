@@ -49,6 +49,7 @@ public class BubbleBlitz extends CanvasWindow {
         createBackground();
         bubbleManager.generateBubbles();
         createCannon(random.nextDouble() * (getWidth() - WINDOW_PADDING) + WINDOW_PADDING, getHeight() - WINDOW_PADDING, 90);
+        draw();
     }
 
     private void playGame(){
@@ -64,6 +65,7 @@ public class BubbleBlitz extends CanvasWindow {
             shoot(cannonBall);
             System.out.println("------------------------");
             remove(cannonBall);
+            draw();
         }
     }
 
@@ -73,6 +75,7 @@ public class BubbleBlitz extends CanvasWindow {
         while (ballIsInMotion) {
             ballIsInMotion = cannonBall.updatePosition(0.1) && !bubbleManager.testHit(cannonBall);
             pause(10);
+            draw();
         }
     }
 
