@@ -11,11 +11,12 @@ import java.util.Scanner;
  * The main game class to run the game popping bubbles.
  */
 @SuppressWarnings("WeakerAccess")
-public class BubbleBlitz extends CanvasWindow {
+public class BubbleBlitz {
 
     private Random random;
     private Cannon cannon;
     private BubbleManager bubbleManager;
+    private CanvasWindow canvas;
 
     public static final int WINDOW_PADDING = 30;
     public static final Color SKY_COLOR = new Color(188, 217, 255);
@@ -28,9 +29,9 @@ public class BubbleBlitz extends CanvasWindow {
     }
 
     public BubbleBlitz() {
-        super("BubbleBlitz", 800, 600);
+        canvas = new CanvasWindow("BubbleBlitz", 800, 600);
         random = new Random();
-        bubbleManager = new BubbleManager(this);
+        bubbleManager = new BubbleManager(canvas);
     }
 
     public void run(){
@@ -45,11 +46,11 @@ public class BubbleBlitz extends CanvasWindow {
      */
     public void resetGame() {
         bubbleManager.removeAllBubbles();
-        removeAll();
+        canvas.removeAll();
         createBackground();
         bubbleManager.generateBubbles();
-        createCannon(random.nextDouble() * (getWidth() - WINDOW_PADDING) + WINDOW_PADDING, getHeight() - WINDOW_PADDING, 90);
-        draw();
+        createCannon(random.nextDouble() * (canvas.getWidth() - WINDOW_PADDING) + WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 90);
+        canvas.draw();
     }
 
     private void playGame(){
@@ -60,12 +61,12 @@ public class BubbleBlitz extends CanvasWindow {
             cannon.updateCannon(angle);
             System.out.println("Enter a velocity: ");
             double velocity = input.nextDouble();
-            CannonBall cannonBall = new CannonBall(cannon.getX2(), cannon.getY2(), velocity, angle, getWidth(), getHeight());
-            cannonBall.addToCanvas(this);
+            CannonBall cannonBall = new CannonBall(cannon.getX2(), cannon.getY2(), velocity, angle, canvas.getWidth(), canvas.getHeight());
+            cannonBall.addToCanvas(canvas);
             shoot(cannonBall);
             System.out.println("------------------------");
-            cannonBall.removeFromCanvas(this);
-            draw();
+            cannonBall.removeFromCanvas(canvas);
+            canvas.draw();
         }
     }
 
@@ -74,8 +75,8 @@ public class BubbleBlitz extends CanvasWindow {
         int count = 0;
         while (ballIsInMotion) {
             ballIsInMotion = cannonBall.updatePosition(0.1) && !bubbleManager.testHit(cannonBall);
-            pause(10);
-            draw();
+            canvas.pause(10);
+            canvas.draw();
         }
     }
 
@@ -87,23 +88,23 @@ public class BubbleBlitz extends CanvasWindow {
      */
     private void createCannon(double centerX, double centerY, double angleDegrees) {
         cannon = new Cannon(centerX, centerY, angleDegrees);
-        add(cannon);
+        canvas.add(cannon);
     }
 
     /**
      * Creates the sky and ground background
      */
     private void createBackground() {
-        Rectangle sky = new Rectangle(0, 0, getWidth(), getHeight());
+        Rectangle sky = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         sky.setFillColor(SKY_COLOR);
         sky.setFilled(true);
-        add(sky);
+        canvas.add(sky);
 
-        Rectangle ground = new Rectangle(0, getHeight()- WINDOW_PADDING, getWidth(), WINDOW_PADDING);
+        Rectangle ground = new Rectangle(0, canvas.getHeight() - WINDOW_PADDING, canvas.getWidth(), WINDOW_PADDING);
         ground.setFilled(true);
         ground.setFillColor(GROUND_COLOR);
         ground.setStroked(false);
-        add(ground);
+        canvas.add(ground);
     }
 
 }

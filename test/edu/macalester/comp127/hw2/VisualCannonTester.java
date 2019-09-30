@@ -6,21 +6,15 @@ import comp127graphics.Line;
 import java.awt.*;
 
 @SuppressWarnings("WeakerAccess")
-public class VisualCannonTester extends CanvasWindow {
-
-    private Cannon cannon;
+public class VisualCannonTester {
 
     public static final double SPEED = 100;
     public static final int WINDOW_PADDING = 30;
 
     public static void main(String[] args) {
-        VisualCannonTester tester = new VisualCannonTester();
-    }
-
-    public VisualCannonTester() {
-        super("Cannon Angles", 1100, 600);
-        cannon = new Cannon(WINDOW_PADDING, getHeight()-WINDOW_PADDING, 0);
-        add(cannon);
+        CanvasWindow canvas = new CanvasWindow("Cannon Angles", 1100, 600);
+        Cannon cannon = new Cannon(WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 0);
+        canvas.add(cannon);
 
         for(int angle=0; angle <=90; angle+=5) {
             cannon.updateCannon(angle);
@@ -28,8 +22,8 @@ public class VisualCannonTester extends CanvasWindow {
             double angleInDegrees = angle;
             double ballInitialCenterX = cannon.getX2();
             double ballInitialCenterY = cannon.getY2();
-            double maxXBound = getWidth();
-            double maxYBound = getHeight()-WINDOW_PADDING;
+            double maxXBound = canvas.getWidth();
+            double maxYBound = canvas.getHeight()-WINDOW_PADDING;
 
             //TODO: instantiate a CannonBall using the variables immediately above and the SPEED constant
             CannonBall cannonBall = new CannonBall(
@@ -40,7 +34,7 @@ public class VisualCannonTester extends CanvasWindow {
                 maxXBound,
                 maxYBound);
 
-            cannonBall.addToCanvas(this);
+            cannonBall.addToCanvas(canvas);
             boolean ballIsInMotion = true;
             while (ballIsInMotion) {
                 double oldX = cannonBall.getCenterX();
@@ -48,9 +42,9 @@ public class VisualCannonTester extends CanvasWindow {
                 ballIsInMotion = cannonBall.updatePosition(0.1);
                 Line tracer = new Line(oldX, oldY, cannonBall.getCenterX(), cannonBall.getCenterY());
                 tracer.setStrokeColor(Color.LIGHT_GRAY);
-                add(tracer);
-                draw();
-                pause(10);
+                canvas.add(tracer);
+                canvas.draw();
+                canvas.pause(5);
             }
         }
     }

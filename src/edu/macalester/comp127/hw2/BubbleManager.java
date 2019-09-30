@@ -1,5 +1,7 @@
 package edu.macalester.comp127.hw2;
 
+import comp127graphics.CanvasWindow;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,7 +11,7 @@ import java.util.Random;
  */
 public class BubbleManager {
 
-    private BubbleBlitz canvas;
+    private CanvasWindow canvas;
     private List<Bubble> bubbles;
     private Random random;
 
@@ -21,7 +23,7 @@ public class BubbleManager {
     /**
      * Constructs a bubble manager for the specified window object.
      */
-    public BubbleManager(BubbleBlitz canvas) {
+    public BubbleManager(CanvasWindow canvas) {
         bubbles = new ArrayList<>();
         random = new Random();
         this.canvas = canvas;
