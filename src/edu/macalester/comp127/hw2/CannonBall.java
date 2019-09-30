@@ -11,9 +11,7 @@ public class CannonBall {
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 
-    // This solution keeps centerX and centerY as instance variables.
-    // Solutions could also choose to derive them from the Ellipse’s x and y properties.
-    private double centerX, centerY, dx, dy, maxX, maxY;
+    //TODO: Add instance variables. Remember that instance variables may or may not have corresponding constructor parameters.
 
     private Ellipse ballShape;
 
@@ -25,35 +23,17 @@ public class CannonBall {
             double maxX,
             double maxY) {
 
-        // In this solution, updateEllipsePosition() sets x & y below,
-        // but it’s also fine to do the center → upper left math in the constructor call right here:
-        ballShape = new Ellipse(0, 0, BALL_RADIUS * 2, BALL_RADIUS * 2);
-        ballShape.setFilled(true);
+        //TODO: implement me.
+        // You'll need to appropriately call super() in the very first line.
+        // Hint: Look at Ellipse's available constructors.
 
-        this.centerX = centerX;
-        this.centerY = centerY;
-        updateEllipsePosition();
-
-        this.maxX = maxX;
-        this.maxY = maxY;
-
-        double initialAngleInRadians = Math.toRadians(initialAngle);
-        dx = initialSpeed * Math.cos(initialAngleInRadians);
-        dy = initialSpeed * -Math.sin(initialAngleInRadians);
-    }
-
-    /**
-     * The cannonball’s center on the screen.
-     */
-    public double getCenterX() {
-        return centerX;
-    }
-
-    /**
-     * The cannonball’s center on the screen.
-     */
-    public double getCenterY() {
-        return centerY;
+        // To compute the initial velocity:
+        //
+        //double initialAngleRadians = Math.toRadians(initialAngle);
+        //initialSpeed * cos(initialAngleInRadians)   // initial x velocity
+        //initialSpeed * -sin(initialAngleInRadians)  // initial y velocity
+        //
+        // (You'll need to figure out how to use those values.)
     }
 
     /**
@@ -61,31 +41,20 @@ public class CannonBall {
      * @return true if the ball is in within the maxXBound and maxYBound
      */
     public boolean updatePosition(double dt) {
-        double newX = centerX + dx * dt,
-            newY = centerY + dy * dt;
-        if (newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
-            centerX = newX;
-            centerY = newY;
-            dy -= GRAVITY * dt;
-            updateEllipsePosition();
-            return true;
-        } else {
-            return false;
-        }
+        //TODO: fix me
+        return false;
     }
 
     /**
-     * Updates the Ellipse’s position on the screen to reflect centerX and centerY, so that the
-     * graphical position of the ball matches the physics position.
+     * Adds the cannonball's image to the given canvas.
      */
-    private void updateEllipsePosition() {
-        ballShape.setCenter(centerX, centerY);
-    }
-
     public void addToCanvas(CanvasWindow canvas) {
         canvas.add(ballShape);
     }
 
+    /**
+     * Remove the cannonball's image to the given canvas.
+     */
     public void removeFromCanvas(CanvasWindow canvas) {
         canvas.remove(ballShape);
     }

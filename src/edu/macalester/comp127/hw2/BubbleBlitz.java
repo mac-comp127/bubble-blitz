@@ -35,10 +35,7 @@ public class BubbleBlitz {
     }
 
     public void run() {
-        while (true) {
-            resetGame();
-            playGame();
-        }
+        resetGame();
     }
 
     /**
@@ -51,33 +48,6 @@ public class BubbleBlitz {
         bubbleManager.generateBubbles();
         createCannon(random.nextDouble() * (canvas.getWidth() - WINDOW_PADDING) + WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 90);
         canvas.draw();
-    }
-
-    private void playGame() {
-        Scanner input = new Scanner(System.in);
-        while (bubbleManager.bubblesStillExist()) {
-            System.out.println("Enter an angle between 0 and 180 degrees: ");
-            double angle = input.nextDouble();
-            cannon.updateCannon(angle);
-            System.out.println("Enter a velocity: ");
-            double velocity = input.nextDouble();
-            CannonBall cannonBall = new CannonBall(cannon.getX2(), cannon.getY2(), velocity, angle, canvas.getWidth(), canvas.getHeight());
-            cannonBall.addToCanvas(canvas);
-            shoot(cannonBall);
-            System.out.println("------------------------");
-            cannonBall.removeFromCanvas(canvas);
-            canvas.draw();
-        }
-    }
-
-    private void shoot(CannonBall cannonBall) {
-        boolean ballIsInMotion = true;
-        int count = 0;
-        while (ballIsInMotion) {
-            ballIsInMotion = cannonBall.updatePosition(0.1) && !bubbleManager.testHit(cannonBall);
-            canvas.pause(10);
-            canvas.draw();
-        }
     }
 
     /**
