@@ -1,16 +1,16 @@
 package edu.macalester.comp127.hw2;
 
-import java.awt.*;
+import comp127graphics.CanvasWindow;
+import comp127graphics.Rectangle;
+
+import java.awt.Color;
 import java.util.Random;
 import java.util.Scanner;
-
-import comp127graphics.CanvasWindow;
-import comp127graphics.Line;
-import comp127graphics.Rectangle;
 
 /**
  * The main game class to run the game popping bubbles.
  */
+@SuppressWarnings("WeakerAccess")
 public class BubbleBlitz extends CanvasWindow {
 
     private Random random;

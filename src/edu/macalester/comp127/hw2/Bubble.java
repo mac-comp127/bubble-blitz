@@ -3,7 +3,7 @@ package edu.macalester.comp127.hw2;
 import comp127graphics.Ellipse;
 import comp127graphics.GraphicsGroup;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Represents a bubble that could be popped by a CannonBall.

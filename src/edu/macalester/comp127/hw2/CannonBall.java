@@ -6,6 +6,7 @@ import comp127graphics.Ellipse;
  * Represents a cannon ball that follows a parabolic arc based on physics equations.
  */
 public class CannonBall extends Ellipse {
+@SuppressWarnings("WeakerAccess")
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 

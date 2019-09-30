@@ -5,6 +5,7 @@ import comp127graphics.Line;
 
 import java.awt.*;
 
+@SuppressWarnings("WeakerAccess")
 public class VisualCannonTester extends CanvasWindow {
 
     private Cannon cannon;
