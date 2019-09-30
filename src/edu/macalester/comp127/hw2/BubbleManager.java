@@ -18,7 +18,7 @@ public class BubbleManager {
     public static final int MIN_BUBBLES = 3;
     public static final int MAX_BUBBLES = 6;
     public static final int MIN_RADIUS = 5;
-    public static final int MAX_RADIUS= 100;
+    public static final int MAX_RADIUS = 100;
 
     /**
      * Constructs a bubble manager for the specified window object.
@@ -34,9 +34,9 @@ public class BubbleManager {
      */
     public void generateBubbles() {
         int numBubbles = randomInt(MIN_BUBBLES, MAX_BUBBLES);
-        for(int i=0; i < numBubbles; i++) {
+        for (int i = 0; i < numBubbles; i++) {
             double x = randomDouble(0, canvas.getWidth());
-            double y = randomDouble(0, canvas.getHeight()-BubbleBlitz.WINDOW_PADDING);
+            double y = randomDouble(0, canvas.getHeight() - BubbleBlitz.WINDOW_PADDING);
             double radius = randomDouble(MIN_RADIUS, MAX_RADIUS);
             Bubble bubble = new Bubble(x, y, radius);
             canvas.add(bubble);
@@ -51,7 +51,7 @@ public class BubbleManager {
      */
     public boolean testHit(CannonBall cannonBall) {
         // The following is java's syntax for a "for each" loop, i.e. "for each bubble b in the bubbles list, do..."
-        for(Bubble b : bubbles) {
+        for (Bubble b : bubbles) {
             if (b.intersects(cannonBall)) {
                 popBubble(b);
                 return true;
@@ -73,7 +73,7 @@ public class BubbleManager {
      */
     public void removeAllBubbles() {
         // The following is java's syntax for a "for each" loop, i.e. "for each bubble, b, in the bubbles list do..."
-        for(Bubble b : bubbles) {
+        for (Bubble b : bubbles) {
             canvas.remove(b);
         }
         bubbles.clear();

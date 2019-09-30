@@ -62,8 +62,8 @@ public class CannonBall {
      */
     public boolean updatePosition(double dt) {
         double newX = centerX + dx * dt,
-               newY = centerY + dy * dt;
-        if(newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
+            newY = centerY + dy * dt;
+        if (newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
             centerX = newX;
             centerY = newY;
             dy -= GRAVITY * dt;

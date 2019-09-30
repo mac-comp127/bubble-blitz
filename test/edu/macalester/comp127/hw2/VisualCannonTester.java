@@ -3,7 +3,7 @@ package edu.macalester.comp127.hw2;
 import comp127graphics.CanvasWindow;
 import comp127graphics.Line;
 
-import java.awt.*;
+import java.awt.Color;
 
 @SuppressWarnings("WeakerAccess")
 public class VisualCannonTester {
@@ -16,14 +16,14 @@ public class VisualCannonTester {
         Cannon cannon = new Cannon(WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 0);
         canvas.add(cannon);
 
-        for(int angle=0; angle <=90; angle+=5) {
+        for (int angle = 0; angle <= 90; angle += 5) {
             cannon.updateCannon(angle);
 
             double angleInDegrees = angle;
             double ballInitialCenterX = cannon.getX2();
             double ballInitialCenterY = cannon.getY2();
             double maxXBound = canvas.getWidth();
-            double maxYBound = canvas.getHeight()-WINDOW_PADDING;
+            double maxYBound = canvas.getHeight() - WINDOW_PADDING;
 
             //TODO: instantiate a CannonBall using the variables immediately above and the SPEED constant
             CannonBall cannonBall = new CannonBall(

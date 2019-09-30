@@ -34,8 +34,8 @@ public class BubbleBlitz {
         bubbleManager = new BubbleManager(canvas);
     }
 
-    public void run(){
-        while(true) {
+    public void run() {
+        while (true) {
             resetGame();
             playGame();
         }
@@ -53,9 +53,9 @@ public class BubbleBlitz {
         canvas.draw();
     }
 
-    private void playGame(){
+    private void playGame() {
         Scanner input = new Scanner(System.in);
-        while(bubbleManager.bubblesStillExist()) {
+        while (bubbleManager.bubblesStillExist()) {
             System.out.println("Enter an angle between 0 and 180 degrees: ");
             double angle = input.nextDouble();
             cannon.updateCannon(angle);
@@ -70,7 +70,7 @@ public class BubbleBlitz {
         }
     }
 
-    private void shoot(CannonBall cannonBall){
+    private void shoot(CannonBall cannonBall) {
         boolean ballIsInMotion = true;
         int count = 0;
         while (ballIsInMotion) {
