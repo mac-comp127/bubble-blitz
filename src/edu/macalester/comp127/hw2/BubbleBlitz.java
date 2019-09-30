@@ -61,10 +61,10 @@ public class BubbleBlitz extends CanvasWindow {
             System.out.println("Enter a velocity: ");
             double velocity = input.nextDouble();
             CannonBall cannonBall = new CannonBall(cannon.getX2(), cannon.getY2(), velocity, angle, getWidth(), getHeight());
-            add(cannonBall);
+            cannonBall.addToCanvas(this);
             shoot(cannonBall);
             System.out.println("------------------------");
-            remove(cannonBall);
+            cannonBall.removeFromCanvas(this);
             draw();
         }
     }

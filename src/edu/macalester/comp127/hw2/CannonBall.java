@@ -1,18 +1,21 @@
 package edu.macalester.comp127.hw2;
 
+import comp127graphics.CanvasWindow;
 import comp127graphics.Ellipse;
 
 /**
  * Represents a cannon ball that follows a parabolic arc based on physics equations.
  */
-public class CannonBall extends Ellipse {
 @SuppressWarnings("WeakerAccess")
+public class CannonBall {
     public static final double GRAVITY = -9.8;
     public static final double BALL_RADIUS = 2.5;
 
     // This solution keeps centerX and centerY as instance variables.
     // Solutions could also choose to derive them from the Ellipse’s x and y properties.
     private double centerX, centerY, dx, dy, maxX, maxY;
+
+    private Ellipse ballShape;
 
     public CannonBall(
             double centerX,
@@ -24,8 +27,8 @@ public class CannonBall extends Ellipse {
 
         // In this solution, updateEllipsePosition() sets x & y below,
         // but it’s also fine to do the center → upper left math in the constructor call right here:
-        super(0, 0, BALL_RADIUS * 2, BALL_RADIUS * 2);
-        setFilled(true);
+        ballShape = new Ellipse(0, 0, BALL_RADIUS * 2, BALL_RADIUS * 2);
+        ballShape.setFilled(true);
 
         this.centerX = centerX;
         this.centerY = centerY;
@@ -76,8 +79,14 @@ public class CannonBall extends Ellipse {
      * graphical position of the ball matches the physics position.
      */
     private void updateEllipsePosition() {
-        setPosition(
-            centerX - getWidth() / 2,
-            centerY - getHeight() / 2);
+        ballShape.setCenter(centerX, centerY);
+    }
+
+    public void addToCanvas(CanvasWindow canvas) {
+        canvas.add(ballShape);
+    }
+
+    public void removeFromCanvas(CanvasWindow canvas) {
+        canvas.remove(ballShape);
     }
 }

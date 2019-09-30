@@ -40,7 +40,7 @@ public class VisualCannonTester extends CanvasWindow {
                 maxXBound,
                 maxYBound);
 
-            add(cannonBall);
+            cannonBall.addToCanvas(this);
             boolean ballIsInMotion = true;
             while (ballIsInMotion) {
                 double oldX = cannonBall.getCenterX();
