@@ -10,7 +10,7 @@ Hat tip to Bret Jackson, the original author of this assignment.
 
 ## Background Knowledge: Using the `GraphicsGroup` class
 
-The `comp124graphics` package contains a class called `GraphicsGroup` that is a `GraphicsObject`, and can therefore be placed on a canvas using the `add` method — but is also a container for graphics objects, like a canvas, with its _own_ `add` method. This enables several graphical objects that could be placed together or all moved in the same way to be kept together in one object and all moved at once.
+The `comp127graphics` package contains a class called `GraphicsGroup` that is a `GraphicsObject`, and can therefore be placed on a canvas using the `add` method — but is also a container for graphics objects, like a canvas, with its _own_ `add` method. This enables several graphical objects that could be placed together or all moved in the same way to be kept together in one object and all moved at once.
 
 One thing to keep in mind with `GraphicsGroup`s is that they define their own interior coordinate system. For example, if you add a `Rectangle` object to the group at position (10, 10) and then add the group to the `CanvasWindow` at position (50, 50), then your rectangle will actually appear at position (60,60) relative to the upper left corner of the window.
 

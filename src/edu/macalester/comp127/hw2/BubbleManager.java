@@ -1,4 +1,4 @@
-package edu.macalester.comp124.hw2;
+package edu.macalester.comp127.hw2;
 
 import java.util.ArrayList;
 import java.util.List;

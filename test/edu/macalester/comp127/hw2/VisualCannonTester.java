@@ -1,7 +1,7 @@
-package edu.macalester.comp124.hw2;
+package edu.macalester.comp127.hw2;
 
-import comp124graphics.CanvasWindow;
-import comp124graphics.Line;
+import comp127graphics.CanvasWindow;
+import comp127graphics.Line;
 
 import java.awt.*;
 
@@ -48,6 +48,7 @@ public class VisualCannonTester extends CanvasWindow {
                 Line tracer = new Line(oldX, oldY, cannonBall.getCenterX(), cannonBall.getCenterY());
                 tracer.setStrokeColor(Color.LIGHT_GRAY);
                 add(tracer);
+                draw();
                 pause(10);
             }
         }

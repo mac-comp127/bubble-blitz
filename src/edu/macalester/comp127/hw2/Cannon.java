@@ -1,6 +1,6 @@
-package edu.macalester.comp124.hw2;
+package edu.macalester.comp127.hw2;
 
-import comp124graphics.Line;
+import comp127graphics.Line;
 
 /**
  * A cannon represented as a Line graphical object pointing a specific direction based on the input angle.
