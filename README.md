@@ -96,8 +96,10 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
 - Add the cannonball to the canvas
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
+  - Call the CanvasWindow’s draw() method to refresh the screen
   - Pause for 10ms
 - Remove the cannonball from the canvas
+- Call the CanvasWindow’s draw() method to refresh the screen
 
 Requirements and hints:
 
