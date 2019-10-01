@@ -24,12 +24,12 @@ Your task in this homework is to create an Angry Birds style game where the user
 2. Explore the code we have given you. We have already decomposed the problem into the following classes:
   - `BubbleBlitz`: A `CanvasWindow` responsible for running the program and holding the other graphical objects.
   - `Cannon`: a `Line` representing the direction the cannon is pointing
-  - `CannonBall`: an `Ellipse` representing the cannon ball. Responsible for updating its position when fired.
-  - `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannon ball.
+  - `CannonBall`: tracks the motion of the cannonball, and displays it on the screen as an `Ellipse`.
+  - `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannonball.
   - `BubbleManager`: keeps track of bubbles and is able to query each bubble to see if it should be popped.
   - `VisualCannonTester`: can be used to test that your CannonBall code works correctly.
  
-### Part 0: Cannon Balls
+### Part 0: Cannonballs
 
 You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. As you work, think: “How can I test what I am writing? How can I organize my work so that I can test it _sooner_?”
 
@@ -45,9 +45,9 @@ Each `CannonBall` object must keep track of the following state:
 
 `CannonBall` provides an empty constructor. You will need to fill it in.
 
-First call the constructor of the super class. This will make the error that appears on the class signature go away.
-
 Use the parameters to initialize the starting state of the class. There is a comment with a hint about computing the initial velocity.
+
+Initialize `ballShape` by creating an `Ellipse` of the appropriate size.
 
 #### Property accessors
 
@@ -61,7 +61,7 @@ Your method should do this:
 
 - Calculate new x and y coordinates by adding the x and y velocities times `dt` to the current coordinates.
 - If the new positions are greater than zero and less than the maximum:
-  - Move the `CannonBall` to the new position. (Hint: A CannonBall *is* an Ellipse which stores the x and y position. Look at the Ellipse methods for help.)
+  - Move the `CannonBall` to the new position. (Hint: A `CannonBall` has an `Ellipse` named `ballShape`, which will need to move to the new x and y position so that you can see the cannonball moving on the screen. Look at the methods of `Ellipse` for ideas.)
   - Subtract `GRAVITY` times `dt` from the y velocity.
   - Return true, meaning “in bounds.”
 - Otherwise, if the ball is out of bounds:
@@ -71,7 +71,7 @@ Your method should do this:
 
 Now visually test your results. Open `VisualCannonTester` in the test folder, and edit line 33 to initialize a `CannonBall` object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
 
-![visual image of the cannon ball trajectories](cannontrajectories.png)
+![visual image of the cannonball trajectories](cannontrajectories.png)
 
 #### Unit testing
 
@@ -81,13 +81,13 @@ You should also test your code with unit tests. In the test folder, run `CannonB
 
 Look at the `Bubble` class. We have completed the constructor and drawing code for you already. Make sure you understand how the positioning of the Ellipses inside the `GraphicsGroup` works. We will be using `GraphicsGroup` objects in future assignments.
 
-Complete the `isCannonBallWithin` method. This should return true if the cannon ball parameter is within the bubble's radius. Otherwise it should return false.
+Complete the `intersects` method. This should return true if the cannonball parameter is within the bubble's radius. Otherwise it should return false.
 
 In the test folder, run `BubbleTest`. Its tests should now pass.
 
 ### Part 2: Popping Bubbles
 
-Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannon balls at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
+Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannonballs at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
 
 - Ask the user for an angle between zero and 180 degrees
 - Update the cannon to the specified angle
@@ -105,7 +105,7 @@ Requirements and hints:
 
 - You must use method decomposition! Make sure not all of the pseudocode above is in one giant method. Give each method one small, clear purpose.
 - Look at the documentation for `CanvasWindow` to figure out how to pause and remove objects.
-- Look at the `BubbleManager` to determine which method actually calls the bubbles’ `isCannonBallWithin` method.
+- Look at the `BubbleManager` to determine which method actually calls the bubbles’ `intersects` method.
 
 Run the `BubbleBlitz` program and interactively test that you can shoot a bubble.
 
@@ -121,5 +121,5 @@ There are many things you could do to go beyond the basics of this assignment:
 - Implement a maximum number of shots the user can take before telling them that they lose. Display the current shot count on the screen.
 - Add more interesting graphics drawings (e.g. animations of bubbles popping, a more detailed cannon, etc.)
 - Implement a count down timer that displays on the screen
-- Implement a class to represent obstacles randomly distributed throughout the sky. The obstacles should block the cannon balls, so that the user has to make use of the projectile curves to hit blocked bubbles.
+- Implement a class to represent obstacles randomly distributed throughout the sky. The obstacles should block the cannonballs, so that the user has to make use of the projectile curves to hit blocked bubbles.
 - Make the bubbles slowly float across the screen while the cannonball is moving.
