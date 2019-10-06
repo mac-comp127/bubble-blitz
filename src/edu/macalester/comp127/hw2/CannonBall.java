@@ -23,10 +23,13 @@ public class CannonBall {
             double maxX,
             double maxY) {
 
-        //TODO: implement me.
-        // You'll need to appropriately call super() in the very first line.
+        // TODO: implement me.
+        //        
+        // You'll need to initialize ballShape.
         // Hint: Look at Ellipse's available constructors.
-
+        //
+        // You'll also need to initialize the instance variables you added above.
+        //
         // To compute the initial velocity:
         //
         //double initialAngleRadians = Math.toRadians(initialAngle);
