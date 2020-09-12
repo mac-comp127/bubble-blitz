@@ -1,6 +1,6 @@
 package edu.macalester.comp127.hw2;
 
-import comp127graphics.CanvasWindow;
+import edu.macalester.graphics.CanvasWindow;
 
 import java.util.ArrayList;
 import java.util.List;

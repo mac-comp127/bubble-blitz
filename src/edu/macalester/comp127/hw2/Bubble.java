@@ -1,7 +1,7 @@
 package edu.macalester.comp127.hw2;
 
-import comp127graphics.Ellipse;
-import comp127graphics.GraphicsGroup;
+import edu.macalester.graphics.Ellipse;
+import edu.macalester.graphics.GraphicsGroup;
 
 import java.awt.Color;
 

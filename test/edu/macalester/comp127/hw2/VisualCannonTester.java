@@ -1,7 +1,7 @@
 package edu.macalester.comp127.hw2;
 
-import comp127graphics.CanvasWindow;
-import comp127graphics.Line;
+import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Line;
 
 import java.awt.Color;
 

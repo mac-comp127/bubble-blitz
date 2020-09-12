@@ -3,14 +3,15 @@
 In this homework, you will practice:
 
 - Decomposing a problem into classes and methods
-- Creating animation loops
-- Exploring how to write effective tests
+- Doing coordinate arithmetic and physics simulation
+- Creating animations using loops
+- Using different testing strategies
 
 Hat tip to Bret Jackson, the original author of this assignment.
 
 ## Background Knowledge: Using the `GraphicsGroup` class
 
-The `comp127graphics` package contains a class called `GraphicsGroup` that is a `GraphicsObject`, and can therefore be placed on a canvas using the `add` method — but is also a container for graphics objects, like a canvas, with its _own_ `add` method. This enables several graphical objects that could be placed together or all moved in the same way to be kept together in one object and all moved at once.
+The `edu.macalester.graphics` package contains a class called `GraphicsGroup` that is a `GraphicsObject`, and can therefore be placed on a canvas using the `add` method — but is also a container for graphics objects, like a canvas, with its _own_ `add` method. This enables several graphical objects that could be placed together or all moved in the same way to be kept together in one object and all moved at once.
 
 One thing to keep in mind with `GraphicsGroup`s is that they define their own interior coordinate system. For example, if you add a `Rectangle` object to the group at position (10, 10) and then add the group to the `CanvasWindow` at position (50, 50), then your rectangle will actually appear at position (60,60) relative to the upper left corner of the window.
 
@@ -18,16 +19,16 @@ One thing to keep in mind with `GraphicsGroup`s is that they define their own in
 
 Your task in this homework is to create an Angry Birds style game where the user can adjust the angle and velocity of a cannon (the black line) to shoot purple bubbles on the screen:
 
-![visual image of the bubble blitz game](bubbleblitz.png)
+![screenshot of the bubble blitz game](bubbleblitz.png)
 
-1. Fork and clone the project. Import the code into Intellij as a new module. Remember to choose the `.iml` file, **not the folder**.
-2. Explore the code we have given you. We have already decomposed the problem into the following classes:
-  - `BubbleBlitz`: A `CanvasWindow` responsible for running the program and holding the other graphical objects.
-  - `Cannon`: a `Line` representing the direction the cannon is pointing
-  - `CannonBall`: tracks the motion of the cannonball, and displays it on the screen as an `Ellipse`.
-  - `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannonball.
-  - `BubbleManager`: keeps track of bubbles and is able to query each bubble to see if it should be popped.
-  - `VisualCannonTester`: can be used to test that your CannonBall code works correctly.
+Explore the code we have given you. We have already decomposed the problem into the following classes:
+
+- `BubbleBlitz`: contains the main method, createsthe game’s `CanvasWindow`, and is responsible for running the program and gathering together all the other objects that make up the game.
+- `Cannon`: a `Line` representing the direction the cannon is pointing.
+- `CannonBall`: tracks the motion of the cannonball, and displays it on the screen as an `Ellipse`.
+- `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannonball.
+- `BubbleManager`: keeps track of bubbles and is able to query each bubble to see if it should be popped.
+- `VisualCannonTester`: can be used to test that your CannonBall code works correctly.
  
 ### Part 0: Cannonballs
 

@@ -1,7 +1,7 @@
 package edu.macalester.comp127.hw2;
 
-import comp127graphics.CanvasWindow;
-import comp127graphics.Ellipse;
+import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Ellipse;
 
 /**
  * Represents a cannon ball that follows a parabolic arc based on physics equations.
