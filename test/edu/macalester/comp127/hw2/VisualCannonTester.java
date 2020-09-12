@@ -20,26 +20,25 @@ public class VisualCannonTester {
             cannon.updateCannon(angle);
 
             double angleInDegrees = angle;
-            double ballInitialCenterX = cannon.getX2();
-            double ballInitialCenterY = cannon.getY2();
             double maxXBound = canvas.getWidth();
             double maxYBound = canvas.getHeight() - WINDOW_PADDING;
 
             //TODO: instantiate a CannonBall using the variables immediately above and the SPEED constant
-            CannonBall cannonBall = new CannonBall(/* add constructor parameters here */);
+            // CannonBall cannonBall = new CannonBall(/* add constructor parameters here */);
 
-            cannonBall.addToCanvas(canvas);
-            boolean ballIsInMotion = true;
-            while (ballIsInMotion) {
-                double oldX = cannonBall.getCenterX();
-                double oldY = cannonBall.getCenterY();
-                ballIsInMotion = cannonBall.updatePosition(0.1);
-                Line tracer = new Line(oldX, oldY, cannonBall.getCenterX(), cannonBall.getCenterY());
-                tracer.setStrokeColor(Color.LIGHT_GRAY);
-                canvas.add(tracer);
-                canvas.draw();
-                canvas.pause(5);
-            }
+            //TODO: uncomment the code below
+            // cannonBall.addToCanvas(canvas);
+            // boolean ballIsInMotion = true;
+            // while (ballIsInMotion) {
+            //     double oldX = cannonBall.getCenterX();
+            //     double oldY = cannonBall.getCenterY();
+            //     ballIsInMotion = cannonBall.updatePosition(0.1);
+            //     Line tracer = new Line(oldX, oldY, cannonBall.getCenterX(), cannonBall.getCenterY());
+            //     tracer.setStrokeColor(Color.LIGHT_GRAY);
+            //     canvas.add(tracer);
+            //     canvas.draw();
+            //     canvas.pause(5);
+            // }
         }
     }
 }

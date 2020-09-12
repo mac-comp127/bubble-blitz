@@ -70,7 +70,7 @@ Your method should do this:
 
 #### Visual testing
 
-Now visually test your results. Open `VisualCannonTester` in the test folder, and edit line 33 to initialize a `CannonBall` object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
+Now visually test your results. Open `VisualCannonTester` in the test folder. Uncomment the commented-out code, and edit line 27 to initialize a `CannonBall` object using the value for the variables defined on the previous few lines. Run the code. You should get an animated result that looks like the following when it is complete:
 
 ![visual image of the cannonball trajectories](cannontrajectories.png)
 
@@ -104,9 +104,9 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
 
 Requirements and hints:
 
-- You must use method decomposition! Make sure not all of the pseudocode above is in one giant method. Give each method one small, clear purpose.
+- You must use method decomposition! Make sure the pseudocode above is **not all in one giant method**. Give each method one small, clear purpose.
 - Look at the documentation for `CanvasWindow` to figure out how to pause and remove objects.
-- Look at the `BubbleManager` to determine which method actually calls the bubbles’ `intersects` method.
+- Look at `BubbleManager` to determine which method actually calls the bubbles’ `intersects` method.
 
 Run the `BubbleBlitz` program and interactively test that you can shoot a bubble.
 
@@ -116,11 +116,11 @@ Once you can do that, modify your code again so that when all the bubbles have p
 
 ### Optional bonus challenges
 
-Occasionally, our homeworks will list optional extra credit tasks that allow you to go beyond the basic requirements of the assignment. You won't receive a _lot_ of extra credit points for the extra work (If you are doing extra credit, you probably don't need the points anyway), but they are fun opportunities to challenge yourself and learn more!
+Occasionally, our homeworks will list optional extra credit tasks that allow you to go beyond the basic requirements of the assignment. You won’t receive a _lot_ of extra credit points for the extra work, so focus on making your code clean and well-decomposed first. However, if your code is in code shape, then take advantage of these fun opportunities to challenge yourself and learn more!
+
 There are many things you could do to go beyond the basics of this assignment:
 
 - Implement a maximum number of shots the user can take before telling them that they lose. Display the current shot count on the screen.
 - Add more interesting graphics drawings (e.g. animations of bubbles popping, a more detailed cannon, etc.)
-- Implement a count down timer that displays on the screen
 - Implement a class to represent obstacles randomly distributed throughout the sky. The obstacles should block the cannonballs, so that the user has to make use of the projectile curves to hit blocked bubbles.
 - Make the bubbles slowly float across the screen while the cannonball is moving.
