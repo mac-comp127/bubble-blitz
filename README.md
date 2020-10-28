@@ -76,7 +76,7 @@ Now visually test your results. Open `VisualCannonTester` in the test folder. Un
 
 #### Unit testing
 
-You should also test your code with unit tests. In the test folder, run `CannonBallTest` and make sure that it passes. (The numbers in the test are already correct.) Add new test methods to check that `updatePosition` returns the expected boolean value, and that it does not change the position if the result would put it outside of the specified bounds.
+You should also test your code with unit tests. In the test folder, run `CannonBallTest`, uncomment the commented-out code, and make sure that the test passes. (The numbers in the test are already correct.) Add new test methods to check that `updatePosition` returns the expected boolean value, and that it does not change the position if the result would put it outside of the specified bounds.
 
 ### Part 1: Bubbles
 
