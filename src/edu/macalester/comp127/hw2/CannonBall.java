@@ -32,7 +32,7 @@ public class CannonBall {
         //
         // To compute the initial velocity:
         //
-        //double initialAngleRadians = Math.toRadians(initialAngle);
+        //double initialAngleInRadians = Math.toRadians(initialAngle);
         //initialSpeed * cos(initialAngleInRadians)   // initial x velocity
         //initialSpeed * -sin(initialAngleInRadians)  // initial y velocity
         //
