@@ -51,7 +51,7 @@ public class BubbleBlitz {
     }
 
     /**
-     * Creates a cannon.
+     * Creates a cannon and adds it to the canvas.
      * @param centerX The anchor position of the cannon
      * @param centerY The anchor position of the cannon
      * @param angleDegrees The direction of the cannon
@@ -62,7 +62,7 @@ public class BubbleBlitz {
     }
 
     /**
-     * Creates the sky and ground background
+     * Creates the sky and ground background and adds them to the canvas.
      */
     private void createBackground() {
         Rectangle sky = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());

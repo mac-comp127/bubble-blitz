@@ -50,7 +50,6 @@ public class BubbleManager {
      * @return true If a bubble has been destroyed
      */
     public boolean testHit(CannonBall cannonBall) {
-        // The following is java's syntax for a "for each" loop, i.e. "for each bubble b in the bubbles list, do..."
         for (Bubble b : bubbles) {
             if (b.intersects(cannonBall)) {
                 popBubble(b);
