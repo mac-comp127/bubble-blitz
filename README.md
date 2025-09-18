@@ -29,7 +29,7 @@ Explore the code we have given you. We have already decomposed the problem into 
 - `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannonball.
 - `BubbleManager`: keeps track of bubbles and is able to query each bubble to see if it should be popped.
 - `VisualCannonTester`: can be used to test that your CannonBall code works correctly.
- 
+
 ### Part 0: Cannonballs
 
 You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. As you work, think: “How can I test what I am writing? How can I organize my work so that I can test it _sooner_?”
@@ -82,9 +82,17 @@ You should also test your code with unit tests. In the test folder, run `CannonB
 
 Look at the `Bubble` class. We have completed the constructor and drawing code for you already. Make sure you understand how the positioning of the Ellipses inside the `GraphicsGroup` works. We will be using `GraphicsGroup` objects in future assignments.
 
+We need to change the `intersects` method. Remember our test-driven development workflow for making changes to code:
+
+1. Run the tests. If they don't pass, then...
+2. Change the code.
+3. Goto (1) and repeat until the tests pass!
+
+So: run the tests in `BubbleTest`. They will fail.
+
 Complete the `intersects` method. This should return true if the cannonball parameter is within the bubble's radius. Otherwise it should return false.
 
-In the test folder, run `BubbleTest`. Its tests should now pass.
+Run the tests again and change your code as necessary until the tests pass.
 
 ### Part 2: Popping bubbles
 
@@ -101,7 +109,8 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
   - Call the CanvasWindow’s draw() method to refresh the screen
-  - Pause for 10ms
+  - Pause for 10ms.
+    - Hint: How do you do this? Look for code that does this: click the magnifying glass in the left pane and search for "pause". Find Java code that does this and use that for inspiration.
 - Remove the cannonball from the canvas
 - Call the CanvasWindow’s draw() method to refresh the screen
 
@@ -109,7 +118,7 @@ Requirements and hints:
 
 - You must use method decomposition! Make sure the pseudocode above is **not all in one giant method**. Give each method one small, clear purpose.
 - Look at the documentation for `CanvasWindow` to figure out how to pause and remove objects.
-- Look at `BubbleManager` to determine which method actually calls the bubbles’ `intersects` method.
+- How do you know when the cannonball has hit a bubble? Look at `BubbleManager`. How can an instance of that class tell you when a cannonball has intersected a bubble?
 
 Run the `BubbleBlitz` program and interactively test that you can shoot a bubble.
 
