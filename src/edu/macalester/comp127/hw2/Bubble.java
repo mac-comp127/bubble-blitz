@@ -34,7 +34,12 @@ public class Bubble extends GraphicsGroup {
     private void createBubbleDrawing() {
         double curRadius = radius;
         for (int i = 0; i < NUM_LAYERS; i++) {
-            Ellipse ellipse = new Ellipse(radius - curRadius, radius - curRadius, 2 * curRadius, 2 * curRadius);
+            Ellipse ellipse = new Ellipse(
+                radius - curRadius,
+                radius - curRadius,
+                2 * curRadius,
+                2 * curRadius
+            );
             ellipse.setFillColor(BUBBLE_COLOR);
             ellipse.setFilled(true);
             ellipse.setStroked(false);
@@ -49,7 +54,7 @@ public class Bubble extends GraphicsGroup {
      * @return true If the given ball intersects this bubble (even tangentially).
      */
     public boolean intersects(CannonBall ball) {
-        //TODO return true if the ball is within the radius of the bubble.
+        // TODO: return true if the ball is within the radius of the bubble.
         // Hint: Don't forget to take into account the ball's radius too.
         // Hint: The Math.hypot() method can help you compute the distance between two points.
         return false;

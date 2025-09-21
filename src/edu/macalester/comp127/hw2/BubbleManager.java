@@ -50,7 +50,6 @@ public class BubbleManager {
      * @return true If a bubble has been destroyed
      */
     public boolean testHit(CannonBall cannonBall) {
-        // The following is java's syntax for a "for each" loop, i.e. "for each bubble b in the bubbles list, do..."
         for (Bubble b : bubbles) {
             if (b.intersects(cannonBall)) {
                 popBubble(b);
@@ -72,7 +71,6 @@ public class BubbleManager {
      * Removes all the bubbles from the canvas and the list.
      */
     public void removeAllBubbles() {
-        // The following is java's syntax for a "for each" loop, i.e. "for each bubble, b, in the bubbles list do..."
         for (Bubble b : bubbles) {
             canvas.remove(b);
         }
@@ -84,7 +82,7 @@ public class BubbleManager {
      * @return true if bubbles still exist that have not been popped.
      */
     public boolean bubblesStillExist() {
-        return bubbles.size() > 0;
+        return !bubbles.isEmpty();
     }
 
     public int getNumberOfBubbles() {
