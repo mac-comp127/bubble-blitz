@@ -59,4 +59,16 @@ public class Bubble extends GraphicsGroup {
         // Hint: The Math.hypot() method can help you compute the distance between two points.
         return false;
     }
+
+    /**
+     * Animates this bubble popping to nothing. This method waits until the animation finishes.
+     */
+    public void animatePop() {
+        int animSteps = 10;
+        for (int step = 0; step < animSteps; step++) {
+            setScale(Math.pow(1.3, step + 1));
+            getCanvas().draw();
+            getCanvas().pause(16);
+        }
+    }
 }

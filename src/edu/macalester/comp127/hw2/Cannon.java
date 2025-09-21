@@ -45,8 +45,9 @@ public class Cannon {
             throw new IllegalArgumentException("angle must be between 0 and 180 degrees");
         }
 
-        for (int i = 0; i < 20; i++) {
-            double alpha = i / 20.0;
+        int animSteps = 50;
+        for (int i = 0; i < animSteps; i++) {
+            double alpha = (double) i / animSteps;
             double intermediateAngle = lerp(angle, newAngle, alpha);
             setAngle(intermediateAngle);
             line.getCanvas().draw();

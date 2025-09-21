@@ -86,7 +86,7 @@ Complete the `intersects` method. This should return true if the cannonball para
 
 In the test folder, run `BubbleTest`. Its tests should now pass.
 
-### Part 2: Popping Bubbles
+### Part 2: Popping bubbles
 
 Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannonballs at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
 
@@ -113,7 +113,19 @@ Requirements and hints:
 
 Run the `BubbleBlitz` program and interactively test that you can shoot a bubble.
 
-### Part 3: Playing a Whole Game
+### Part 2b: Adding some juice
+
+Let’s make it just a little more satisfying when the cannonball hits a bubble. The `Bubble` class has an `animatePop` method. Add one line of code to call `animatePop` _just before_ removing the bubble from the canvas.
+
+The trick here is figuring out _where_ in the code to add that one line. You will have to read and understand some of what’s there to figure this out.
+
+<details>
+  <summary>🔹 Hint</summary>
+
+  Look in the `BubbleManager` class. Where is the code that removes a bubble from the canvas when it is popped?
+</details>
+
+### Part 3: Playing a whole game
 
 Now modify your code so that as long as bubbles still exist on the canvas you can repeatedly keep asking the user for new angles/velocities to shoot again. (Hint: the `BubbleManager` can tell you if there are still bubbles left on the screen.)
 
