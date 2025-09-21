@@ -13,15 +13,15 @@ import java.util.Scanner;
 @SuppressWarnings("WeakerAccess")
 public class BubbleBlitz {
 
-    private Random random;
-    private Cannon cannon;
-    private BubbleManager bubbleManager;
-    private CanvasWindow canvas;
-
     public static final int WINDOW_PADDING = 30;
     public static final Color SKY_COLOR = new Color(188, 217, 255);
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
 
+    private final Random random;
+    private final Scanner input;
+    private Cannon cannon;
+    private final BubbleManager bubbleManager;
+    private final CanvasWindow canvas;
 
     public static void main(String[] args) {
         BubbleBlitz game = new BubbleBlitz();
@@ -32,6 +32,7 @@ public class BubbleBlitz {
         canvas = new CanvasWindow("BubbleBlitz", 800, 600);
         random = new Random();
         bubbleManager = new BubbleManager(canvas);
+        input = new Scanner(System.in);
     }
 
     public void run() {
@@ -39,14 +40,19 @@ public class BubbleBlitz {
     }
 
     /**
-     * Resets the canvas by removing everything and redrawing new bubbles and a new random placement for the cannon.
+     * Resets the canvas by removing everything and redrawing new bubbles and a new random placement
+     * for the cannon.
      */
     public void resetGame() {
         bubbleManager.removeAllBubbles();
         canvas.removeAll();
         createBackground();
         bubbleManager.generateBubbles();
-        createCannon(random.nextDouble() * (canvas.getWidth() - WINDOW_PADDING) + WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 90);
+        createCannon(
+            random.nextDouble() * (canvas.getWidth() - WINDOW_PADDING) + WINDOW_PADDING,
+            canvas.getHeight() - WINDOW_PADDING,
+            90
+        );
         canvas.draw();
     }
 
@@ -58,7 +64,7 @@ public class BubbleBlitz {
      */
     private void createCannon(double centerX, double centerY, double angleDegrees) {
         cannon = new Cannon(centerX, centerY, angleDegrees);
-        canvas.add(cannon);
+        canvas.add(cannon.getGraphics());
     }
 
     /**
@@ -70,11 +76,13 @@ public class BubbleBlitz {
         sky.setFilled(true);
         canvas.add(sky);
 
-        Rectangle ground = new Rectangle(0, canvas.getHeight() - WINDOW_PADDING, canvas.getWidth(), WINDOW_PADDING);
+        Rectangle ground = new Rectangle(
+            0, canvas.getHeight() - WINDOW_PADDING,
+            canvas.getWidth(), WINDOW_PADDING
+        );
         ground.setFilled(true);
         ground.setFillColor(GROUND_COLOR);
         ground.setStroked(false);
         canvas.add(ground);
     }
-
 }

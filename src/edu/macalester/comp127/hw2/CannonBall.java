@@ -4,7 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 
 /**
- * Represents a cannon ball that follows a parabolic arc based on physics equations.
+ * Represents a cannonball that follows a parabolic arc based on physics equations.
  */
 @SuppressWarnings("WeakerAccess")
 public class CannonBall {
@@ -16,13 +16,13 @@ public class CannonBall {
     private Ellipse ballShape;
 
     public CannonBall(
-            double centerX,
-            double centerY,
-            double initialSpeed,
-            double initialAngle,
-            double maxX,
-            double maxY) {
-
+        double centerX,
+        double centerY,
+        double initialSpeed,
+        double initialAngle,
+        double maxX,
+        double maxY
+    ) {
         // TODO: implement me.
         //        
         // You'll need to initialize ballShape.
@@ -39,26 +39,16 @@ public class CannonBall {
         // (You'll need to figure out how to use those values.)
     }
 
+    public Ellipse getGraphics() {
+        return ballShape;
+    }
+
     /**
-     * Update the cannon ball's position if it is in bounds
+     * Update the cannonball's position if it is in bounds
      * @return true if the ball is in within the maxXBound and maxYBound
      */
     public boolean updatePosition(double dt) {
         //TODO: fix me
         return false;
-    }
-
-    /**
-     * Adds the cannonball's shape to the given canvas.
-     */
-    public void addToCanvas(CanvasWindow canvas) {
-        canvas.add(ballShape);
-    }
-
-    /**
-     * Removes the cannonball's shape from the given canvas.
-     */
-    public void removeFromCanvas(CanvasWindow canvas) {
-        canvas.remove(ballShape);
     }
 }
