@@ -8,14 +8,14 @@ import java.awt.Color;
 /**
  * Represents a bubble that could be popped by a CannonBall.
  */
-public class Bubble extends GraphicsGroup {
+public class Bubble {
+    public static final int NUM_LAYERS = 5;
+    public static final Color BUBBLE_COLOR = new Color(201, 150, 216, 55);
 
+    private final GraphicsGroup graphics;
     private double centerX;
     private double centerY;
     private double radius;
-
-    public static final int NUM_LAYERS = 5;
-    public static final Color BUBBLE_COLOR = new Color(201, 150, 216, 55);
 
     /**
      * Constructs a bubble centered on the centerX/Y position with the specified radius.
@@ -24,8 +24,17 @@ public class Bubble extends GraphicsGroup {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
-        this.setPosition(centerX - radius, centerY - radius);
+
+        graphics = new GraphicsGroup();
         createBubbleDrawing();
+        graphics.setPosition(centerX - radius, centerY - radius);
+    }
+
+    /**
+     * Returns the art for this bubble.
+     */
+    public GraphicsGroup getGraphics() {
+        return graphics;
     }
 
     /**
@@ -43,7 +52,7 @@ public class Bubble extends GraphicsGroup {
             ellipse.setFillColor(BUBBLE_COLOR);
             ellipse.setFilled(true);
             ellipse.setStroked(false);
-            add(ellipse);
+            graphics.add(ellipse);
             curRadius -= radius / NUM_LAYERS;
         }
     }
@@ -66,9 +75,9 @@ public class Bubble extends GraphicsGroup {
     public void animatePop() {
         int animSteps = 10;
         for (int step = 0; step < animSteps; step++) {
-            setScale(Math.pow(1.3, step + 1));
-            getCanvas().draw();
-            getCanvas().pause(16);
+            graphics.setScale(Math.pow(1.3, step + 1));
+            graphics.getCanvas().draw();
+            graphics.getCanvas().pause(16);
         }
     }
 }

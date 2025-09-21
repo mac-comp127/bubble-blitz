@@ -10,15 +10,14 @@ import java.util.Random;
  * This class keeps track of creating the bubbles on the screen and handling when they pop.
  */
 public class BubbleManager {
-
-    private CanvasWindow canvas;
-    private List<Bubble> bubbles;
-    private Random random;
-
     public static final int MIN_BUBBLES = 3;
     public static final int MAX_BUBBLES = 6;
     public static final int MIN_RADIUS = 5;
     public static final int MAX_RADIUS = 100;
+
+    private CanvasWindow canvas;
+    private List<Bubble> bubbles;
+    private Random random;
 
     /**
      * Constructs a bubble manager for the specified window object.
@@ -39,7 +38,7 @@ public class BubbleManager {
             double y = randomDouble(0, canvas.getHeight() - BubbleBlitz.WINDOW_PADDING);
             double radius = randomDouble(MIN_RADIUS, MAX_RADIUS);
             Bubble bubble = new Bubble(x, y, radius);
-            canvas.add(bubble);
+            canvas.add(bubble.getGraphics());
             bubbles.add(bubble);
         }
     }
@@ -63,7 +62,7 @@ public class BubbleManager {
      * Destroys a bubble when it has been hit by a cannonball.
      */
     private void popBubble(Bubble b) {
-        canvas.remove(b);
+        canvas.remove(b.getGraphics());
         bubbles.remove(b);
     }
 
@@ -72,7 +71,7 @@ public class BubbleManager {
      */
     public void removeAllBubbles() {
         for (Bubble b : bubbles) {
-            canvas.remove(b);
+            canvas.remove(b.getGraphics());
         }
         bubbles.clear();
     }
