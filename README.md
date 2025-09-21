@@ -91,12 +91,12 @@ In the test folder, run `BubbleTest`. Its tests should now pass.
 Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannonballs at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
 
 - Ask the user for an angle between zero and 180 degrees
-  - Hint: The class already has a `Scanner` instance variable that you can use to get input. (What is the name of that variable?) Look at your solution for the Units and Coins if you need a reminder of how to reader numbers from a `Scanner`.
-- Animates the cannon moving to the specified angle
-  - Hint: You **do not** need to modify the `Cannon` class. What are the methods of `Cannon`? Which might be relevant? Which are _public_ methods meant to be used from other classes?
+  - Hint: The class already has a `Scanner` instance variable that you can use to get input. (What is the name of that variable?) Look at your solution for the Units and Coins if you need a reminder of how to read numbers from a `Scanner`.
+- Animate the cannon moving to the specified angle
+  - Hint: You **do not** need to modify the `Cannon` class. You also do not need to implement this animation yourself. What are the methods of `Cannon`? Which methods might be relevant? Which are _public_ methods meant to be used from other classes? How do you call those methods from your `BubbleBlitz` class?
 - Ask the user for an initial velocity
 - Create a cannonball positioned at the end of the cannon, with the specified velocity, angle, and boundaries based on the width/height of the window
-  - Hint: Again, pay attention to the methods of `Cannon` that you can use. To create the cannonball, you will need separate x and y coordinates. But the relevant `Cannon` method doesn’t return two separate numbers. What does it return? How can you get an x and a y from it?
+  - Hint: Again, pay attention to the methods of `Cannon` that you can use. The cannonball’s constructor requires separate x and y coordinates. But the relevant `Cannon` method returns the x and y together in one value. What kind of value does it return? How can you get an x and a y from it?
 - Add the cannonball’s graphics to the canvas
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
