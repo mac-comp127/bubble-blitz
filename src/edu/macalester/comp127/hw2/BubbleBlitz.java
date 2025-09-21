@@ -18,6 +18,7 @@ public class BubbleBlitz {
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
 
     private final Random random;
+    private final Scanner input;
     private Cannon cannon;
     private final BubbleManager bubbleManager;
     private final CanvasWindow canvas;
@@ -31,6 +32,7 @@ public class BubbleBlitz {
         canvas = new CanvasWindow("BubbleBlitz", 800, 600);
         random = new Random();
         bubbleManager = new BubbleManager(canvas);
+        input = new Scanner(System.in);
     }
 
     public void run() {

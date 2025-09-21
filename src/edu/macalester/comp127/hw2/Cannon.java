@@ -45,8 +45,8 @@ public class Cannon {
             throw new IllegalArgumentException("angle must be between 0 and 180 degrees");
         }
 
-        for (int i = 0; i < 10; i++) {
-            double alpha = i / 10.0;
+        for (int i = 0; i < 20; i++) {
+            double alpha = i / 20.0;
             double intermediateAngle = lerp(angle, newAngle, alpha);
             setAngle(intermediateAngle);
             line.getCanvas().draw();
@@ -55,6 +55,9 @@ public class Cannon {
         setAngle(newAngle);
     }
 
+    /**
+     * Instantly moves the cannon to the given angle. For internal use.
+     */
     private void setAngle(double angle) {
         this.angle = angle;
 

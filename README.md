@@ -91,10 +91,13 @@ In the test folder, run `BubbleTest`. Its tests should now pass.
 Open `BubbleBlitz`. This class contains the main method to run your game to allow a player to shoot cannonballs at the bubbles to pop them. Start by implementing a single round of the game that prompts a user for input and then fires the cannon. A single round progresses as follows:
 
 - Ask the user for an angle between zero and 180 degrees
-- Update the cannon to the specified angle
+  - Hint: The class already has a `Scanner` instance variable that you can use to get input. (What is the name of that variable?) Look at your solution for the Units and Coins if you need a reminder of how to reader numbers from a `Scanner`.
+- Animates the cannon moving to the specified angle
+  - Hint: You **do not** need to modify the `Cannon` class. What are the methods of `Cannon`? Which might be relevant? Which are _public_ methods meant to be used from other classes?
 - Ask the user for an initial velocity
-- Create a cannonball starting at the cannon’s x2/y2 position with the specified velocity, angle, and boundaries based on the width/height of the window
-- Add the cannonball to the canvas
+- Create a cannonball positioned at the end of the cannon, with the specified velocity, angle, and boundaries based on the width/height of the window
+  - Hint: Again, pay attention to the methods of `Cannon` that you can use. To create the cannonball, you will need separate x and y coordinates. But the relevant `Cannon` method doesn’t return two separate numbers. What does it return? How can you get an x and a y from it?
+- Add the cannonball’s graphics to the canvas
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
   - Call the CanvasWindow’s draw() method to refresh the screen
@@ -110,9 +113,13 @@ Requirements and hints:
 
 Run the `BubbleBlitz` program and interactively test that you can shoot a bubble.
 
-Now modify your code so that as long as bubbles still exist on the canvas you can repeatedly keep asking the user for new angles/velocities to shoot again.
+### Part 3: Playing a Whole Game
 
-Once you can do that, modify your code again so that when all the bubbles have popped the game resets and allows you to play again. If you have practiced good method decomposition, these last two steps should not be too difficult. Hint: the `BubbleManager` can tell you if there are still bubbles left on the screen.
+Now modify your code so that as long as bubbles still exist on the canvas you can repeatedly keep asking the user for new angles/velocities to shoot again. (Hint: the `BubbleManager` can tell you if there are still bubbles left on the screen.)
+
+Once you can do that, then modify your code again so that when all the bubbles have popped, the game resets and allows you to play again.
+
+If you have practiced good method decomposition, these last two steps should not be too difficult.
 
 ### Optional bonus challenges
 
