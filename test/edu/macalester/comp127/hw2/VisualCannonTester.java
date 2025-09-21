@@ -1,9 +1,6 @@
 package edu.macalester.comp127.hw2;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Line;
-
-import java.awt.Color;
 
 @SuppressWarnings("WeakerAccess")
 public class VisualCannonTester {
@@ -14,10 +11,10 @@ public class VisualCannonTester {
     public static void main(String[] args) {
         CanvasWindow canvas = new CanvasWindow("Cannon Angles", 1100, 600);
         Cannon cannon = new Cannon(WINDOW_PADDING, canvas.getHeight() - WINDOW_PADDING, 0);
-        canvas.add(cannon);
+        canvas.add(cannon.getGraphics());
 
         for (int angle = 0; angle <= 90; angle += 5) {
-            cannon.updateCannon(angle);
+            cannon.rotateToAngle(angle);
 
             double angleInDegrees = angle;
             double maxXBound = canvas.getWidth();
