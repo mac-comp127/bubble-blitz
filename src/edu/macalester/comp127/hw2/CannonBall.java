@@ -39,6 +39,10 @@ public class CannonBall {
         // (You'll need to figure out how to use those values.)
     }
 
+    public Ellipse getGraphics() {
+        return ballShape;
+    }
+
     /**
      * Update the cannonball's position if it is in bounds
      * @return true if the ball is in within the maxXBound and maxYBound
@@ -46,19 +50,5 @@ public class CannonBall {
     public boolean updatePosition(double dt) {
         //TODO: fix me
         return false;
-    }
-
-    /**
-     * Adds the cannonball's shape to the given canvas.
-     */
-    public void addToCanvas(CanvasWindow canvas) {
-        canvas.add(ballShape);
-    }
-
-    /**
-     * Removes the cannonball's shape from the given canvas.
-     */
-    public void removeFromCanvas(CanvasWindow canvas) {
-        canvas.remove(ballShape);
     }
 }
