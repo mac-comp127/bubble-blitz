@@ -45,6 +45,12 @@ Each `CannonBall` object must keep track of the following state:
 - the ball’s current velocity (`dx` and `dy`), and
 - the maximum x and y values (`maxX` and `maxY`) for the boundaries outside of which the ball should stop moving.
 
+<details>
+  <summary>Aside: What are the units for dx and dy?</summary>
+
+  > As with most video games, they are fairly arbitrary units. We are not doing a real physics simulation here, so we can just play with different numbers until the animation looks good. In game development, most things don’t need to be _accurate_; they need to be _convincing_.
+</details>
+
 #### Constructor
 
 `CannonBall` provides an empty constructor. You will need to fill it in.
@@ -115,9 +121,12 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
 
 - Ask the user for an angle between zero and 180 degrees
   - Hint: The class already has a `Scanner` instance variable that you can use to get input. (What is the name of that variable?) Look at your solution for the Units and Coins if you need a reminder of how to read numbers from a `Scanner`.
+
 - Animate the cannon moving to the specified angle
   - Hint: You **do not** need to modify the `Cannon` class. You also do not need to implement this animation yourself. What are the methods of `Cannon`? Which methods might be relevant? Which are _public_ methods meant to be used from other classes? How do you call those methods from your `BubbleBlitz` class?
+
 - Ask the user for an initial velocity
+
 - Create a cannonball positioned at the end of the cannon, with the specified velocity, angle, and boundaries based on the width/height of the window
   - Hint: Again, pay attention to the methods of `Cannon` that you can use.
   - <details>
@@ -127,11 +136,13 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
     </details>
 
 - Add the cannonball’s graphics to the canvas
+
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
+    - `0.1` is a good value to use for the `dt` parameter, but you can play with slightly larger or smaller numbers until you like the feel of the game
   - Call the CanvasWindow’s draw() method to refresh the screen
-  - Pause for 10ms.
-    - Hint: How do you do this? Look for code that does this: click the magnifying glass in the left pane and search for "pause". Find Java code that does this and use that for inspiration.
+  - Pause for 10ms
+    - Hint: How do you do this? Look for code already in the project that does the same thing: click the magnifying glass in the left pane and search for "pause".
 - Remove the cannonball from the canvas
 - Call the CanvasWindow’s draw() method to refresh the screen
 
