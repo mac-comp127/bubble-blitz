@@ -3,6 +3,7 @@
 In this homework, you will practice:
 
 - Decomposing a problem into classes and methods
+- Understanding the relationship between classes, instance variables, methods, and constructors
 - Doing coordinate arithmetic and physics simulation
 - Creating animations using loops
 - Using different testing strategies
@@ -23,7 +24,7 @@ Your task in this homework is to create an Angry Birds style game where the user
 
 Explore the code we have given you. We have already decomposed the problem into the following classes:
 
-- `BubbleBlitz`: contains the main method, createsthe game’s `CanvasWindow`, and is responsible for running the program and gathering together all the other objects that make up the game.
+- `BubbleBlitz`: contains the main method, creates the game’s `CanvasWindow`, and is responsible for running the program and gathering together all the other objects that make up the game.
 - `Cannon`: a `Line` representing the direction the cannon is pointing.
 - `CannonBall`: tracks the motion of the cannonball, and displays it on the screen as an `Ellipse`.
 - `Bubble`: a `GraphicsGroup` representing a single bubble as a collection of concentric circles. Reponsible for determining if it has been hit by a cannonball.
@@ -34,19 +35,33 @@ Explore the code we have given you. We have already decomposed the problem into 
 
 You should use an iterative development process to avoid writing a lot of untested code that then breaks when you finally run it. As you work, think: “How can I test what I am writing? How can I organize my work so that I can test it _sooner_?”
 
-Start by working on the `CannonBall` class. Complete the constructor and add instance variables as needed.
+Start by working on the `CannonBall` class. Complete the class as follows:
+
+#### State
 
 Each `CannonBall` object must keep track of the following state:
 
-- the ball’s current center position (x and y),
-- the ball’s current velocity (dx and dy), and
-- the maximum x and y values for the boundaries outside of which the ball should stop moving.
+- the ball’s current center position (`x` and `y`),
+- the ball’s current velocity (`dx` and `dy`), and
+- the maximum x and y values (`maxX` and `maxY`) for the boundaries outside of which the ball should stop moving.
 
-#### The constructor
+#### Constructor
 
 `CannonBall` provides an empty constructor. You will need to fill it in.
 
-Use the parameters to initialize the starting state of the class. There is a comment with a hint about computing the initial velocity.
+Use the parameters to initialize the starting state of the class.
+
+<details>
+  <summary>🔹 Hint about the constructor</summary>
+
+  > Be mindful of the different between **constructor parameters** and **instance variables**. (Which is which? How is the syntax different for the two? Refer to the bicycle activity and the class structure reading.)
+  >
+  > The **constructor parameters** are the bits of information someone must specify to create a `CannonBall`.
+  >
+  > The **instance variable** are the state a `CannonBall` always has for as long as it exists.
+  >
+  > In this case, there is _not_ a perfect one-to-one correspondence between parameters and instance variables. There is a comment in the code with a hint about computing the initial velocity. (In this context, “initial” means “at the start.”) That comment will help you.
+</details>
 
 Initialize `ballShape` by creating an `Ellipse` of the appropriate size.
 
@@ -104,7 +119,13 @@ Open `BubbleBlitz`. This class contains the main method to run your game to allo
   - Hint: You **do not** need to modify the `Cannon` class. You also do not need to implement this animation yourself. What are the methods of `Cannon`? Which methods might be relevant? Which are _public_ methods meant to be used from other classes? How do you call those methods from your `BubbleBlitz` class?
 - Ask the user for an initial velocity
 - Create a cannonball positioned at the end of the cannon, with the specified velocity, angle, and boundaries based on the width/height of the window
-  - Hint: Again, pay attention to the methods of `Cannon` that you can use. The cannonball’s constructor requires separate x and y coordinates. But the relevant `Cannon` method returns the x and y together in one value. What kind of value does it return? How can you get an x and a y from it?
+  - Hint: Again, pay attention to the methods of `Cannon` that you can use.
+  - <details>
+      <summary>🔹 Hint about getting the ball coordinates</summary>
+
+      > The cannonball’s constructor requires separate x and y coordinates. But the relevant `Cannon` method returns the x and y together in one value. What kind of value does it return? How can you get an x and a y from it?
+    </details>
+
 - Add the cannonball’s graphics to the canvas
 - While the ball does not hit a bubble and is in bounds:
   - Update the ball’s position
