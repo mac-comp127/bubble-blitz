@@ -24,7 +24,7 @@ public class VisualCannonTester {
             // CannonBall cannonBall = new CannonBall(/* add constructor parameters here */);
 
             //TODO: uncomment the code below
-            // cannonBall.addToCanvas(canvas);
+            // canvas.add(cannonBall.getGraphics());
             // boolean ballIsInMotion = true;
             // while (ballIsInMotion) {
             //     double oldX = cannonBall.getCenterX();
